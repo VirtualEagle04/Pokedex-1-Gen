@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author fedeS
+ *
+ */
+module Pokedex {
+}
