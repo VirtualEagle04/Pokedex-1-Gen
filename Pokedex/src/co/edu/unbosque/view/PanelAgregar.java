@@ -16,8 +16,8 @@ import javax.swing.JTextField;
 public class PanelAgregar extends JPanel{
 	
 	private JPanel panel_agregar, panel_creacion;
-	private JLabel ind_id, ind_nombre, ind_hp, ind_atk, ind_def, ind_satk, ind_sdef, ind_vel, ind_tipo, ind_tipo_sec, ind_descripcion; //Indicadores
-	private JTextField campo_id, campo_nombre, campo_hp, campo_atk, campo_def, campo_satk, campo_sdef, campo_vel; //Campos
+	private JLabel ind_id, ind_nombre, ind_lv, ind_hp, ind_atk, ind_def, ind_satk, ind_sdef, ind_vel, ind_tipo, ind_tipo_sec, ind_descripcion; //Indicadores
+	private JTextField campo_id, campo_nombre, campo_lv, campo_hp, campo_atk, campo_def, campo_satk, campo_sdef, campo_vel; //Campos
 	private JTextArea campo_descripcion;
 	private JComboBox<String> campo_tipo, campo_tipo_sec; 
 	private JButton confirmar;
@@ -59,74 +59,85 @@ public class PanelAgregar extends JPanel{
 		campo_nombre.setFont(fuente);
 		campo_nombre.setFont(campo_nombre.getFont().deriveFont(Font.BOLD, 12));
 		
+		ind_lv = new JLabel("LV");
+		ind_lv.setBounds(30, 50, 100, 15);
+		ind_lv.setFont(fuente);
+		ind_lv.setFont(ind_lv.getFont().deriveFont(Font.BOLD, 15));
+		
+		campo_lv = new JTextField();
+		campo_lv.setEditable(true);
+		campo_lv.setBounds(135, 50, 60, 20);
+		campo_lv.setFont(fuente);
+		campo_lv.setFont(campo_lv.getFont().deriveFont(Font.BOLD, 15));
+		
 		ind_hp = new JLabel("HP");
-		ind_hp.setBounds(30, 50, 100, 15);
+		ind_hp.setBounds(30, 70, 100, 15);
 		ind_hp.setFont(fuente);
 		ind_hp.setFont(ind_hp.getFont().deriveFont(Font.BOLD, 15));
 		
 		campo_hp = new JTextField();
 		campo_hp.setEditable(true);
-		campo_hp.setBounds(135, 50, 60, 20);
+		campo_hp.setBounds(135, 70, 60, 20);
 		campo_hp.setFont(fuente);
 		campo_hp.setFont(campo_hp.getFont().deriveFont(Font.BOLD, 15));
 		
 		ind_atk = new JLabel("ATK");
-		ind_atk.setBounds(30, 70, 100, 15);
+		ind_atk.setBounds(30, 90, 100, 15);
 		ind_atk.setFont(fuente);
 		ind_atk.setFont(ind_atk.getFont().deriveFont(Font.BOLD, 15));
 		
 		campo_atk = new JTextField();
 		campo_atk.setEditable(true);
-		campo_atk.setBounds(135, 70, 60, 20);
+		campo_atk.setBounds(135, 90, 60, 20);
 		campo_atk.setFont(fuente);
 		campo_atk.setFont(campo_atk.getFont().deriveFont(Font.BOLD, 15));
 		
 		ind_def = new JLabel("DEF");
-		ind_def.setBounds(30, 90, 100, 15);
+		ind_def.setBounds(30, 110, 100, 15);
 		ind_def.setFont(fuente);
 		ind_def.setFont(ind_def.getFont().deriveFont(Font.BOLD, 15));
 		
 		campo_def = new JTextField();
 		campo_def.setEditable(true);
-		campo_def.setBounds(135, 90, 60, 20);
+		campo_def.setBounds(135, 110, 60, 20);
 		campo_def.setFont(fuente);
 		campo_def.setFont(campo_def.getFont().deriveFont(Font.BOLD, 15));
 		
 		ind_satk = new JLabel("SP.ATK");
-		ind_satk.setBounds(30, 110, 100, 15);
+		ind_satk.setBounds(30, 130, 100, 15);
 		ind_satk.setFont(fuente);
 		ind_satk.setFont(ind_satk.getFont().deriveFont(Font.BOLD, 15));
 		
 		campo_satk = new JTextField();
 		campo_satk.setEditable(true);
-		campo_satk.setBounds(135, 110, 60, 20);
+		campo_satk.setBounds(135, 130, 60, 20);
 		campo_satk.setFont(fuente);
 		campo_satk.setFont(campo_satk.getFont().deriveFont(Font.BOLD, 15));
 		
 		ind_sdef = new JLabel("SP.DEF");
-		ind_sdef.setBounds(30, 130, 100, 15);
+		ind_sdef.setBounds(30, 150, 100, 15);
 		ind_sdef.setFont(fuente);
 		ind_sdef.setFont(ind_sdef.getFont().deriveFont(Font.BOLD, 15));
 		
 		campo_sdef = new JTextField();
 		campo_sdef.setEditable(true);
-		campo_sdef.setBounds(135, 130, 60, 20);
+		campo_sdef.setBounds(135, 150, 60, 20);
 		campo_sdef.setFont(fuente);
 		campo_sdef.setFont(campo_sdef.getFont().deriveFont(Font.BOLD, 15));
 		
 		ind_vel = new JLabel("VEL");
-		ind_vel.setBounds(30, 150, 60, 15);
+		ind_vel.setBounds(30, 170, 60, 15);
 		ind_vel.setFont(fuente);
 		ind_vel.setFont(ind_vel.getFont().deriveFont(Font.BOLD, 15));
 		
 		campo_vel = new JTextField();
 		campo_vel.setEditable(true);
-		campo_vel.setBounds(135, 150, 60, 20);
+		campo_vel.setBounds(135, 170, 60, 20);
 		campo_vel.setFont(fuente);
 		campo_vel.setFont(campo_vel.getFont().deriveFont(Font.BOLD, 15));
 		
 		ind_tipo = new JLabel("TIPO");
-		ind_tipo.setBounds(30, 170, 70, 15);
+		ind_tipo.setBounds(30, 192, 70, 15);
 		ind_tipo.setFont(fuente);
 		ind_tipo.setFont(ind_tipo.getFont().deriveFont(Font.BOLD, 15));
 		
@@ -135,12 +146,12 @@ public class PanelAgregar extends JPanel{
 				"Siniestro", "Tierra", "Veneno", "Volador"};
 		
 		campo_tipo = new JComboBox(tipos);
-		campo_tipo.setBounds(135, 170, 150, 20);
+		campo_tipo.setBounds(135, 192, 150, 20);
 		campo_tipo.setFont(fuente);
 		campo_tipo.setFont(campo_tipo.getFont().deriveFont(Font.BOLD, 12));
 		
 		ind_tipo_sec = new JLabel("2' TIPO");
-		ind_tipo_sec.setBounds(30, 192, 195, 15);
+		ind_tipo_sec.setBounds(30, 213, 195, 15);
 		ind_tipo_sec.setFont(fuente);
 		ind_tipo_sec.setFont(ind_tipo_sec.getFont().deriveFont(Font.BOLD, 15));
 		
@@ -149,18 +160,18 @@ public class PanelAgregar extends JPanel{
 				"Siniestro", "Tierra", "Veneno", "Volador"};
 		
 		campo_tipo_sec = new JComboBox<String>(tipos_sec);
-		campo_tipo_sec.setBounds(135, 192, 150, 20);
+		campo_tipo_sec.setBounds(135, 213, 150, 20);
 		campo_tipo_sec.setFont(fuente);
 		campo_tipo_sec.setFont(campo_tipo_sec.getFont().deriveFont(Font.BOLD, 12));
 		
 		ind_descripcion = new JLabel("DESCRIPCION");
-		ind_descripcion.setBounds(30, 213, 195, 15);
+		ind_descripcion.setBounds(30, 243, 195, 15);
 		ind_descripcion.setFont(fuente);
 		ind_descripcion.setFont(ind_descripcion.getFont().deriveFont(Font.BOLD, 15));
 		
 		campo_descripcion = new JTextArea();
 		campo_descripcion.setEditable(true);
-		campo_descripcion.setBounds(30, 233, 270, 120);
+		campo_descripcion.setBounds(30, 263, 270, 85);
 		campo_descripcion.setBackground(Color.LIGHT_GRAY);
 		campo_descripcion.setLineWrap(true);
 		campo_descripcion.setWrapStyleWord(true);
@@ -182,6 +193,8 @@ public class PanelAgregar extends JPanel{
 		add(campo_id);
 		add(ind_nombre);
 		add(campo_nombre);
+		add(ind_lv);
+		add(campo_lv);
 		add(ind_hp);
 		add(campo_hp);
 		add(ind_atk);
