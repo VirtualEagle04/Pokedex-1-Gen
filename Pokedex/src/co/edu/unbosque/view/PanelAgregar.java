@@ -6,6 +6,7 @@ import java.awt.FontFormatException;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,6 +20,7 @@ public class PanelAgregar extends JPanel{
 	private JTextField campo_id, campo_nombre, campo_hp, campo_atk, campo_def, campo_satk, campo_sdef, campo_vel; //Campos
 	private JTextArea campo_descripcion;
 	private JComboBox<String> campo_tipo, campo_tipo_sec; 
+	private JButton confirmar;
 	private Font fuente;
 	
 	public PanelAgregar() {
@@ -158,12 +160,19 @@ public class PanelAgregar extends JPanel{
 		
 		campo_descripcion = new JTextArea();
 		campo_descripcion.setEditable(true);
-		campo_descripcion.setBounds(30, 233, 270, 150);
+		campo_descripcion.setBounds(30, 233, 270, 120);
 		campo_descripcion.setBackground(Color.LIGHT_GRAY);
 		campo_descripcion.setLineWrap(true);
 		campo_descripcion.setWrapStyleWord(true);
 		campo_descripcion.setFont(fuente);
 		campo_descripcion.setFont(campo_descripcion.getFont().deriveFont(Font.BOLD, 12));
+		
+		confirmar = new JButton("CREAR");
+		confirmar.setBounds(95, 360, 150, 20);
+		confirmar.setBackground(Color.RED);
+		confirmar.setForeground(Color.WHITE);
+		confirmar.setFont(fuente);
+		confirmar.setFont(confirmar.getFont().deriveFont(Font.BOLD, 15));
 		
 		panel_creacion = new JPanel();
 		panel_creacion.setBounds(0,0, 330, 380);
@@ -191,6 +200,7 @@ public class PanelAgregar extends JPanel{
 		add(campo_tipo_sec);
 		add(ind_descripcion);
 		add(campo_descripcion);
+		add(confirmar);
 		
 		panel_agregar = new JPanel();
 		panel_agregar.setBounds(5, 6, 360, 380);
