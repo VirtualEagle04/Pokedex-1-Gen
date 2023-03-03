@@ -36,7 +36,31 @@ public class PokemonDAO extends OperacionesDAO{
 		lista.add(new PokemonDTO("022", "Fearow", 20, 1.2f, 38f, "Normal", "Volador", 65, 90, 65, 61, 61, 100, "Con sus enormes y magnificas alas, puede seguir volando sin tener que aterrizar para descanzar."));
 		lista.add(new PokemonDTO("023", "Ekans", 1, 2f, 6.9f, "Veneno", 35, 60, 44, 40, 54, 55, "Es muy silencioso y sigiloso. Come huevos de pajaros como los de Pidgey y Spearow."));
 		lista.add(new PokemonDTO("024", "Arbok", 22, 3.5f, 65f, "Veneno", 60, 95, 69, 65, 79, 80, "Se dice que las feroces seniales de alerta de su panza difieren un area a otro."));
-		
+		lista.add(new PokemonDTO("025", "Pikachu", 16, 0.4f, 6f, "Electrico", 35, 55, 40, 50, 50, 90, "Cuando varios de estos Pokemon se juntan, su energia puede causar fuertes tormentas."));
+		lista.add(new PokemonDTO("026", "Raichu", 32, 0.8f, 30f, "Electrico", 60, 90, 55, 90, 80, 110, "Su larga cola le sirve para protegerse a si mismo de su potente y alto voltaje."));
+		lista.add(new PokemonDTO("027", "Sandshrew", 1, 0.6f, 12f, "Tierra", 50, 75, 85, 20, 30, 40, "Se oculta bajo tierra, en zonas aridas y alejadas del agua. Solo emerge para cazar su comido."));
+		lista.add(new PokemonDTO("028", "Sandslash", 22, 1f, 29.5f, "Tierra", 75, 100, 110, 45, 55, 65, "Ante el peligro se acurruca en un espinoso ovillo. De esta forma puede rodar para atacar o escapar."));
+		lista.add(new PokemonDTO("029", "Nidoran Hembra", 1, 0.4f, 7f, "Veneno", 55, 47, 52, 40, 40, 41, "Aunque pequenias, sus venenosas puas son muy peligrosas. La hembra tiene pequenios cuernos."));
+		lista.add(new PokemonDTO("030", "Nidorina", 16, 0.8f, 20f, "Veneno", 70, 62, 67, 55, 55, 56, "El cuerno de la hembra crece lentamente. Prefiere ataques fisicos como araniar o morder."));
+		lista.add(new PokemonDTO("031", "Nidoqueen", 32, 1.3f, 60f, "Veneno", "Tierra", 90, 92, 87, 75, 85, 76, "Sus duras escamas lo protegen. Usa su gran corpulencia para ejecutar potentes movimientos."));
+		lista.add(new PokemonDTO("032", "Nidoran Macho", 1, 0.5f, 9f, "Veneno", 46, 57, 40, 40, 40, 50, "Estira sus orejas para sentir el peligro. Cuanto mayores sean sus cuernos, mas fuerte su veneno."));
+		lista.add(new PokemonDTO("033", "Nidorino", 16, 0.9f, 19.5f, "Veneno", 61, 72, 57, 55, 55, 65, "Un Pokemon agresivo, siempre listo para atacar. El cuerno de la cabeza segrega un potente veneno."));
+		lista.add(new PokemonDTO("034", "Nidoking", 32, 1.4f, 62f, "Veneno", "Tierra", 81, 102, 77, 85, 75, 85, "Usa su potente veneno cola en combate para aplastar y oprimir a su presa. Despues le rompe los huesos."));
+		lista.add(new PokemonDTO("035", "Clefairy", 16, 0.6f, 7.5f, "Hada", 70, 45, 48, 60, 65, 35, "Su magico y adorable aspecto atrae a la gente. Es raro y solo aparece en ciertas areas."));
+		lista.add(new PokemonDTO("036", "Clefable", 32, 1.3f, 40f, "Hada", 95, 70, 73, 95, 90, 60, "Un encantador y timido Pokemon muy raro de ver. Corre y se oculta en cuanto siente que viene gente."));
+		lista.add(new PokemonDTO("037", "Vulpix", 1, 0.6f, 9.9f, "Fuego", 38, 41, 40, 50, 65, 65, "Cuando nace solo tiene una cola, pero a medida que crece, esta se va dividiendo desde al punta."));
+		lista.add(new PokemonDTO("038", "Ninetales", 36, 1.1f, 19.9f, "Fuego", 73, 76, 75, 81, 100, 100, "Muy inteligente y vengativo. Agarrar una de sus colas podria causar 1000 años de maldicion."));
+		lista.add(new PokemonDTO("039", "Jigglypuff", 16, 0.5f, 5.5f, "Normal", "Hada", 115, 45, 20, 45, 25, 20, "Cuando sus ojos se iluminan, canta una secreta melodia con la que duerme a sus enemigos."));
+		lista.add(new PokemonDTO("040", "Wigglypuff", 32, 1f, 12f, "Normal", "Hada", 140, 70, 45, 85, 50, 45, "Su cuerpo es blando y gomoso. Cuando se enfada traga aire y se hincha enormemente."));
+		lista.add(new PokemonDTO("041", "Zubat", 1, 0.8f, 7.5f, "Veneno", "Volador", 40, 45, 35, 30, 40, 55, "Forma colonias en lugar oscuras. Usa ultrasonidos para idenficar y acercarse a los objetos."));
+		lista.add(new PokemonDTO("042", "Golbat", 16, 1.6f, 55f, "Veneno", "Volador", 75, 80, 70, 65, 75, 90, "Cuando ataque, seguira chupando energia de su victima, aunque pese tanto que ya no pueda volar."));
+		lista.add(new PokemonDTO("043", "Oddish", 1, 0.5f, 5.4f, "Planta", "Veneno", 45, 50, 55, 75, 65, 30, "Durante el dia entierra su cara en el suelo. Merodea por la noche plantando sus semillas."));
+		lista.add(new PokemonDTO("044", "Gloom", 16, 0.8f, 8.6f, "Planta", "Veneno", 60, 65, 70, 85, 75, 40, "El fluido que gotea de su boca no son babas. Es un nectar que usa para atraer a sus presas."));
+		lista.add(new PokemonDTO("045", "Vileplume", 32, 1.2f, 18.6f, "Planta", "Veneno", 75, 80, 85, 110, 90, 50, "A mayor petalo, mas toxico es su polen. Su cabeza es pesada y le cuesta mantenerla."));
+		lista.add(new PokemonDTO("046", "Paras", 1, 0.3f, 5.4f, "Bicho", "Planta", 35, 70, 55, 45, 55, 25, "Cava para chupar las raices los arboles. Las setas de su espalda crecen a sus expensas."));
+		lista.add(new PokemonDTO("047", "Parasect", 16, 1f, 29.5f, "Bicho", "Planta", 60, 95, 80, 60, 80, 30, "Una pareja de parasitos en la que la seta ha ocupado al bicho. Prefieren los sitios humedos."));
+		lista.add(new PokemonDTO("048", "Venonat", 1, 1f, 30f, "Bicho", "Veneno", 60, 55, 50, 40, 55, 45, "Vive entre las sombras de altos arboles, donde come insectos. Le atrae la luz por la noche."));
+		lista.add(new PokemonDTO("049", "Venomoth", 16, 1.5f, 12.5f, "Bicho", "Veneno", 70, 65, 60, 90, 75, 90, "El polvillo que cubre sus alas es de distinto color segun el tipo de veneno que lleve."));
 	}
 
 	public PokemonDAO(ArrayList<PokemonDTO> lista) {
