@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 
 public class PanelCRUD extends JPanel{
 
-	private JButton agregar, eliminar, actualizar, mostrar;
-	private JLabel agregar_sh, eliminar_sh, actualizar_sh, mostrar_sh;
+	private JButton agregar, eliminar, mostrar;
+	private JLabel agregar_sh, eliminar_sh, mostrar_sh;
 	private Font fuente;
 	
 	public PanelCRUD() {
@@ -48,7 +48,7 @@ public class PanelCRUD extends JPanel{
 		agregar_sh.setFont(agregar.getFont().deriveFont(Font.PLAIN, 15));
 		
 		eliminar = new JButton("Eliminar");
-		eliminar.setBounds(200, 11, 145, 30);
+		eliminar.setBounds(290, 11, 145, 30);
 		eliminar.setContentAreaFilled(false);
 		eliminar.setBorderPainted(false);
 		eliminar.setFocusable(false);
@@ -57,25 +57,10 @@ public class PanelCRUD extends JPanel{
 		eliminar.setFont(eliminar.getFont().deriveFont(Font.PLAIN, 15));
 		
 		eliminar_sh = new JLabel("Eliminar");
-		eliminar_sh.setBounds(227, 13, 145, 30);
+		eliminar_sh.setBounds(317, 13, 145, 30);
 		eliminar_sh.setFont(fuente);
 		eliminar_sh.setForeground(Color.BLACK);
 		eliminar_sh.setFont(eliminar_sh.getFont().deriveFont(Font.PLAIN, 15));
-		
-		actualizar = new JButton("Actualizar");
-		actualizar.setBounds(340, 11, 165, 30);
-		actualizar.setContentAreaFilled(false);
-		actualizar.setBorderPainted(false);
-		actualizar.setFocusable(false);
-		actualizar.setForeground(Color.WHITE);
-		actualizar.setFont(fuente);
-		actualizar.setFont(actualizar.getFont().deriveFont(Font.PLAIN, 15));
-		
-		actualizar_sh = new JLabel("Actualizar");
-		actualizar_sh.setBounds(359, 13, 145, 30);
-		actualizar_sh.setFont(fuente);
-		actualizar_sh.setForeground(Color.BLACK);
-		actualizar_sh.setFont(actualizar_sh.getFont().deriveFont(Font.PLAIN, 15));
 		
 		mostrar = new JButton("Mostrar");
 		mostrar.setBounds(495, 11, 165, 30);
@@ -97,8 +82,6 @@ public class PanelCRUD extends JPanel{
 		add(agregar_sh);
 		add(eliminar);
 		add(eliminar_sh);
-		add(actualizar);
-		add(actualizar_sh);
 		add(mostrar);
 		add(mostrar_sh);
 		setVisible(true);
@@ -118,14 +101,6 @@ public class PanelCRUD extends JPanel{
 
 	public void setEliminar(JButton eliminar) {
 		this.eliminar = eliminar;
-	}
-
-	public JButton getActualizar() {
-		return actualizar;
-	}
-
-	public void setActualizar(JButton actualizar) {
-		this.actualizar = actualizar;
 	}
 
 	public JButton getMostrar() {

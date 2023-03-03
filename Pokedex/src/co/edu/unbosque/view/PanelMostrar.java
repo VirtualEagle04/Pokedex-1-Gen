@@ -15,8 +15,6 @@ import javax.swing.JPanel;
 public class PanelMostrar extends JPanel{
 	
 	private JPanel panel_lista;
-	private JList<String> lista_pokemones;
-	private ArrayList<String> id_nombre;
 	private JLabel bg;
 	private Font fuente;
 	
@@ -48,15 +46,5 @@ public class PanelMostrar extends JPanel{
 		setVisible(true);
 		
 	}
-
-	public ArrayList<String> getId_nombre() {
-		return id_nombre;
-	}
-
-	public void setId_nombre(ArrayList<String> id_nombre) {
-		this.id_nombre = id_nombre;
-	}
-	
-	
 
 }

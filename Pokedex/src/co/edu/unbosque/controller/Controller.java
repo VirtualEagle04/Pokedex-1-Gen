@@ -2,14 +2,12 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Scanner;
 
 import co.edu.unbosque.view.VentanaPrincipal;
 
 public class Controller implements ActionListener{
 	
 	private VentanaPrincipal vp;
-	private Scanner sc;
 	
 	public Controller() {
 		
@@ -17,7 +15,6 @@ public class Controller implements ActionListener{
 	public void run() {
 		vp = new VentanaPrincipal();
 		agregarLectores();
-		sc = new Scanner(System.in);
 	}
 	
 	public void agregarLectores() {
@@ -26,9 +23,6 @@ public class Controller implements ActionListener{
 		
 		vp.getPanel_crud().getEliminar().addActionListener(this);
 		vp.getPanel_crud().getEliminar().setActionCommand("CrudEliminar");
-		
-		vp.getPanel_crud().getActualizar().addActionListener(this);
-		vp.getPanel_crud().getActualizar().setActionCommand("CrudActualizar");
 		
 		vp.getPanel_crud().getMostrar().addActionListener(this);
 		vp.getPanel_crud().getMostrar().setActionCommand("CrudMostrar");
@@ -39,20 +33,25 @@ public class Controller implements ActionListener{
 		switch(e.getActionCommand()) {
 		case "CrudAgregar": {
 			System.out.println("Agregar");
-			
+			vp.getPanel_agregar().setVisible(true);
+			vp.getPanel_mostrar().setVisible(false);
+			vp.getPanel_eliminar().setVisible(false);
 			
 			break;
 		}
 		case "CrudEliminar": {
 			System.out.println("Eliminar");
-			break;
-		}
-		case "CrudActualizar": {
-			System.out.println("Actualizar");
+			vp.getPanel_agregar().setVisible(false);
+			vp.getPanel_mostrar().setVisible(false);
+			vp.getPanel_eliminar().setVisible(true);
+			
 			break;
 		}
 		case "CrudMostrar": {
 			System.out.println("Mostrar");
+			vp.getPanel_agregar().setVisible(false);
+			vp.getPanel_mostrar().setVisible(true);
+			vp.getPanel_eliminar().setVisible(false);
 			break;
 		}
 		
