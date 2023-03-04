@@ -59,6 +59,15 @@ public class Controller implements ActionListener {
 			vp.getPanel_agregar().setVisible(false);
 			vp.getPanel_mostrar().setVisible(true);
 			vp.getPanel_eliminar().setVisible(false);
+			
+			for (int i = 0; i < pdao.getLista().size(); i++) {
+				
+				
+				vp.getPanel_mostrar().getModelo().addElement(pdao.getLista().get(i).getId()+" "+pdao.getLista().get(i).getNombre());
+				
+			}
+			
+			
 			break;
 		}
 		case "AgregConfirmar": {
@@ -106,7 +115,6 @@ public class Controller implements ActionListener {
 				String desc = vp.getPanel_agregar().getCampo_descripcion().getText();
 
 				pdao.crearTipoIndividual(id + "", nombre, lv, al, pe, tipo1, hp, atk, def, satk, sdef, vel, desc);
-				System.out.println(pdao.getLista().get(0));
 
 				break;
 
