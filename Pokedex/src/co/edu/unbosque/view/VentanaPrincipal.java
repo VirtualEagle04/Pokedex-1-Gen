@@ -14,7 +14,7 @@ public class VentanaPrincipal extends JFrame{
 		setTitle("Pokedex");
 		ImageIcon img = new ImageIcon("src/Assets/PokemonSprites/Bulbasaur_icon.png");
 		setIconImage(img.getImage());
-		setSize(720, 480);
+		setSize(720, 540);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setLayout(null);

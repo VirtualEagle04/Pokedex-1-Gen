@@ -36,7 +36,7 @@ public class PanelMostrar extends JPanel{
 		bg.setBounds(0,0,360,500);
 		
 		panel_lista = new JPanel();
-		panel_lista.setBounds(360, 6, 340, 380);
+		panel_lista.setBounds(360, 6, 340, 340);
 		panel_lista.setBackground(Color.RED);
 		panel_lista.setLayout(null);
 		
