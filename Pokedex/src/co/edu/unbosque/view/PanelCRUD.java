@@ -6,14 +6,16 @@ import java.awt.FontFormatException;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 public class PanelCRUD extends JPanel{
 
 	private JButton agregar, eliminar, mostrar;
-	private JLabel agregar_sh, eliminar_sh, mostrar_sh;
+	private JLabel bg, agregar_sh, eliminar_sh, mostrar_sh;
 	private Font fuente;
 	
 	public PanelCRUD() {
@@ -31,6 +33,9 @@ public class PanelCRUD extends JPanel{
 		setLocation(0,0);
 		setBackground(Color.RED);
 		setLayout(null);
+		
+		bg = new JLabel(new ImageIcon("src/Assets/GUI/CRUDbg.png"));
+		bg.setBounds(0,0, 720, 50);
 		
 		agregar = new JButton("Agregar");
 		agregar.setBounds(65, 11, 145, 30);
@@ -84,6 +89,7 @@ public class PanelCRUD extends JPanel{
 		add(eliminar_sh);
 		add(mostrar);
 		add(mostrar_sh);
+		add(bg, JLayeredPane.PALETTE_LAYER);
 		setVisible(true);
 	}
 

@@ -44,6 +44,7 @@ public class PanelMostrar extends JPanel {
 		// apartado de mostrar
 
 		bg = new JLabel(new ImageIcon("src/Assets/GUI/bg.gif"));
+<<<<<<< Updated upstream
 		bg.setBounds(0, 0, 360, 500);
 
 		// filtros para buscar
@@ -88,6 +89,9 @@ public class PanelMostrar extends JPanel {
 		boton_id = new JButton();
 		boton_id.setBounds(690, 35, 14, 14);
 		boton_id.setBackground(Color.RED);
+=======
+		bg.setBounds(5,6,360,440);
+>>>>>>> Stashed changes
 		
 		boton_seleccionar = new JButton();
 		boton_seleccionar.setBounds(450,427,200,20);
@@ -99,7 +103,11 @@ public class PanelMostrar extends JPanel {
 
 		// panel lista de pokemones
 		panel_lista = new JPanel();
+<<<<<<< Updated upstream
 		panel_lista.setBounds(371, 60, 340, 360);
+=======
+		panel_lista.setBounds(360, 6, 340, 440);
+>>>>>>> Stashed changes
 		panel_lista.setBackground(Color.RED);
 		panel_lista.setLayout(null);
 

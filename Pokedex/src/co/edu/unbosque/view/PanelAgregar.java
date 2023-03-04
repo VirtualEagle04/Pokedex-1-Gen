@@ -3,13 +3,19 @@ package co.edu.unbosque.view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -17,11 +23,13 @@ public class PanelAgregar extends JPanel {
 
 	private JPanel panel_agregar, panel_creacion;
 	private JLabel ind_id, ind_nombre, ind_lv, ind_al, ind_pe, ind_hp, ind_atk, ind_def, ind_satk, ind_sdef, ind_vel,
-			ind_tipo, ind_tipo_sec, ind_descripcion; // Indicadores
+			ind_tipo, ind_tipo_sec, ind_descripcion, unidades_m, unidades_kg; // Indicadores
 	private JTextField campo_id, campo_nombre, campo_lv, campo_al, campo_pe, campo_hp, campo_atk, campo_def, campo_satk,
 			campo_sdef, campo_vel; // Campos
+	private JLabel bg, pregunta;
 	private JTextArea campo_descripcion;
 	private JComboBox<String> campo_tipo, campo_tipo_sec;
+	private JScrollPane scrollpane_descripcion;
 	private JButton confirmar;
 	private Font fuente;
 
@@ -72,8 +80,8 @@ public class PanelAgregar extends JPanel {
 		campo_lv.setFont(fuente);
 		campo_lv.setFont(campo_lv.getFont().deriveFont(Font.BOLD, 15));
 
-		ind_al = new JLabel("Alt");
-		ind_al.setBounds(30, 70, 60, 20);
+		ind_al = new JLabel("ALT");
+		ind_al.setBounds(30, 70, 100, 20);
 		ind_al.setFont(fuente);
 		ind_al.setFont(ind_al.getFont().deriveFont(Font.BOLD, 15));
 
@@ -82,9 +90,14 @@ public class PanelAgregar extends JPanel {
 		campo_al.setBounds(135, 70, 60, 20);
 		campo_al.setFont(fuente);
 		campo_al.setFont(ind_al.getFont().deriveFont(Font.BOLD, 15));
+		
+		unidades_m = new JLabel("m.");
+		unidades_m.setBounds(197, 70, 60, 20);
+		unidades_m.setFont(fuente);
+		unidades_m.setFont(unidades_m.getFont().deriveFont(Font.BOLD, 15));
 
-		ind_pe = new JLabel("KG");
-		ind_pe.setBounds(30, 90, 60, 20);
+		ind_pe = new JLabel("PESO");
+		ind_pe.setBounds(30, 90, 110, 20);
 		ind_pe.setFont(fuente);
 		ind_pe.setFont(ind_al.getFont().deriveFont(Font.BOLD, 15));
 
@@ -93,6 +106,11 @@ public class PanelAgregar extends JPanel {
 		campo_pe.setBounds(135, 90, 60, 20);
 		campo_pe.setFont(fuente);
 		campo_pe.setFont(ind_al.getFont().deriveFont(Font.BOLD, 15));
+		
+		unidades_kg = new JLabel("Kg.");
+		unidades_kg.setBounds(197, 90, 60, 20);
+		unidades_kg.setFont(fuente);
+		unidades_kg.setFont(unidades_kg.getFont().deriveFont(Font.BOLD, 15));
 
 		ind_hp = new JLabel("HP");
 		ind_hp.setBounds(30, 110, 100, 15);// 70
@@ -186,6 +204,9 @@ public class PanelAgregar extends JPanel {
 		campo_tipo_sec.setBounds(135, 251, 150, 20);
 		campo_tipo_sec.setFont(fuente);
 		campo_tipo_sec.setFont(campo_tipo_sec.getFont().deriveFont(Font.BOLD, 12));
+		
+		scrollpane_descripcion = new JScrollPane();
+		scrollpane_descripcion.setBounds(30, 320, 270, 85);
 
 		ind_descripcion = new JLabel("DESCRIPCION");
 		ind_descripcion.setBounds(30, 290, 195, 15);
@@ -200,13 +221,16 @@ public class PanelAgregar extends JPanel {
 		campo_descripcion.setWrapStyleWord(true);
 		campo_descripcion.setFont(fuente);
 		campo_descripcion.setFont(campo_descripcion.getFont().deriveFont(Font.BOLD, 12));
+		scrollpane_descripcion.setViewportView(campo_descripcion);
 
-		confirmar = new JButton("CREAR");
+		confirmar = new JButton();
+		confirmar.setLayout(null);
 		confirmar.setBounds(95, 420, 150, 20);
-		confirmar.setBackground(Color.RED);
-		confirmar.setForeground(Color.WHITE);
+		confirmar.setForeground(Color.BLACK);
 		confirmar.setFont(fuente);
 		confirmar.setFont(confirmar.getFont().deriveFont(Font.BOLD, 15));
+		confirmar.setIcon(new ImageIcon("src/Assets/GUI/confirmarbg.png"));
+		confirmar.setBorder(null);
 
 		panel_creacion = new JPanel();
 		panel_creacion.setBounds(0, 0, 330, 440);
@@ -220,8 +244,10 @@ public class PanelAgregar extends JPanel {
 		add(campo_lv);
 		add(ind_al);
 		add(campo_al);
+		add(unidades_m);
 		add(ind_pe);
 		add(campo_pe);
+		add(unidades_kg);
 		add(ind_hp);
 		add(campo_hp);
 		add(ind_atk);
@@ -239,8 +265,25 @@ public class PanelAgregar extends JPanel {
 		add(ind_tipo_sec);
 		add(campo_tipo_sec);
 		add(ind_descripcion);
-		add(campo_descripcion);
+		add(scrollpane_descripcion);
 		add(confirmar);
+		
+		bg = new JLabel(new ImageIcon("src/Assets/GUI/bg.gif"));
+		bg.setBounds(365, 6, 334, 440);
+
+		//Imagen v
+		BufferedImage img = null;
+		try {
+			img = ImageIO.read(new File("src/Assets/GUI/question.png"));
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+		Image dimg = img.getScaledInstance(195, 200, Image.SCALE_SMOOTH);
+		ImageIcon imageIcon = new ImageIcon(dimg);
+		//Imagen ^
+		
+		pregunta = new JLabel(imageIcon);
+		pregunta.setBounds(335, 40, 390, 400);
 
 		panel_agregar = new JPanel();
 		panel_agregar.setBounds(5, 6, 360, 440);
@@ -248,6 +291,8 @@ public class PanelAgregar extends JPanel {
 		panel_agregar.setLayout(null);
 		panel_agregar.add(panel_creacion);
 
+		add(pregunta, JLayeredPane.DRAG_LAYER);
+		add(bg, JLayeredPane.PALETTE_LAYER);
 		add(panel_agregar);
 		setVisible(true);
 	}

@@ -9,6 +9,7 @@ public class VentanaPrincipal extends JFrame{
 	private PanelAgregar panel_agregar;
 	private PanelMostrar panel_mostrar;
 	private PanelEliminar panel_eliminar;
+	private PanelInfo panel_info;
 
 	public VentanaPrincipal() {
 		setTitle("Pokedex");
@@ -19,16 +20,19 @@ public class VentanaPrincipal extends JFrame{
 		setResizable(false);
 		setLayout(null);
 		setFocusable(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		panel_crud = new PanelCRUD();
 		panel_agregar = new PanelAgregar();
 		panel_mostrar = new PanelMostrar();
 		panel_eliminar = new PanelEliminar();
+		panel_info = new PanelInfo();
 		
 		add(panel_crud);
-		add(panel_agregar).setVisible(true);
+		add(panel_agregar).setVisible(false);
 		add(panel_mostrar).setVisible(false);
 		add(panel_eliminar).setVisible(false);
+		add(panel_info).setVisible(true);
 		setVisible(true);
 	}
 
