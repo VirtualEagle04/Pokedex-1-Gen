@@ -1,7 +1,7 @@
 package co.edu.unbosque.model;
 
 public class PokemonDTO {
-	private int id;
+	private String id;
 	private String nombre;
 	private int lv;
 	private float altura;
@@ -24,7 +24,7 @@ public class PokemonDTO {
 	}
 	
 	//Con Tipo Secundario
-	public PokemonDTO(int id, String nombre, int lv, float altura, float peso, String tipo, String tipo_sec, int hp, int ataque,
+	public PokemonDTO(String id, String nombre, int lv, float altura, float peso, String tipo, String tipo_sec, int hp, int ataque,
 			int defensa, int atk_especial, int def_especial, int velocidad, String descripcion) {
 		this.id = id;
 		this.nombre = nombre;
@@ -42,7 +42,7 @@ public class PokemonDTO {
 		this.descripcion = descripcion;
 	}
 	//Sin Tipo Secundario
-	public PokemonDTO(int id, String nombre, int lv, float altura, float peso, String tipo, int hp, int ataque, int defensa,
+	public PokemonDTO(String id, String nombre, int lv, float altura, float peso, String tipo, int hp, int ataque, int defensa,
 			int atk_especial, int def_especial, int velocidad, String descripcion) {
 		this.id = id;
 		this.nombre = nombre;
@@ -58,10 +58,10 @@ public class PokemonDTO {
 		this.velocidad = velocidad;
 		this.descripcion = descripcion;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getNombre() {
