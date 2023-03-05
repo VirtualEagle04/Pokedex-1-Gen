@@ -30,11 +30,25 @@ public class VentanaPrincipal extends JFrame{
 		
 		add(panel_crud);
 		add(panel_agregar).setVisible(false);
-		add(panel_mostrar).setVisible(false);
+		add(panel_mostrar).setVisible(true);
 		add(panel_eliminar).setVisible(false);
-		add(panel_info).setVisible(true);
+		add(panel_info).setVisible(false);
 		setVisible(true);
 	}
+	
+	
+
+	public PanelInfo getPanel_info() {
+		return panel_info;
+	}
+
+
+
+	public void setPanel_info(PanelInfo panel_info) {
+		this.panel_info = panel_info;
+	}
+
+
 
 	public PanelCRUD getPanel_crud() {
 		return panel_crud;

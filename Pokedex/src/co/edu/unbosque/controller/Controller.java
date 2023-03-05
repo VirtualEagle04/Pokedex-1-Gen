@@ -14,7 +14,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 	private VentanaPrincipal vp;
 	private PokemonDAO pdao;
-	private ArrayList<String> valores;
+	private boolean check;
 
 	public Controller() {
 
@@ -24,7 +24,12 @@ public class Controller implements ActionListener, ListSelectionListener {
 		vp = new VentanaPrincipal();
 		pdao = new PokemonDAO();
 		agregarLectores();
-		valores = new ArrayList<>();
+		
+		for (int i = 0; i < pdao.getLista().size(); i++) {
+			vp.getPanel_mostrar().getModelo().addElement(pdao.getLista().get(i).getId()+" "+pdao.getLista().get(i).getNombre());
+		}
+		check = false;
+		
 	}
 	
 
@@ -82,6 +87,8 @@ public class Controller implements ActionListener, ListSelectionListener {
 			vp.getPanel_agregar().setVisible(true);
 			vp.getPanel_mostrar().setVisible(false);
 			vp.getPanel_eliminar().setVisible(false);
+			
+			check = false;
 
 			break;
 		}
@@ -90,6 +97,8 @@ public class Controller implements ActionListener, ListSelectionListener {
 			vp.getPanel_mostrar().setVisible(false);
 			vp.getPanel_eliminar().setVisible(true);
 
+			check = false;
+			
 			break;
 		}
 		case "CrudMostrar": {
@@ -97,11 +106,18 @@ public class Controller implements ActionListener, ListSelectionListener {
 			vp.getPanel_mostrar().setVisible(true);
 			vp.getPanel_eliminar().setVisible(false);
 			
-			for (int i = 0; i < pdao.getLista().size(); i++) {
-				vp.getPanel_mostrar().getModelo().addElement(pdao.getLista().get(i).getId()+" "+pdao.getLista().get(i).getNombre());
-				valores.add(pdao.getLista().get(i).getId()+" "+pdao.getLista().get(i).getNombre());
+			if(check) {
+				for (int i = 0; i < pdao.getLista().size(); i++) {
+					vp.getPanel_mostrar().getModelo().addElement(pdao.getLista().get(i).getId()+" "+pdao.getLista().get(i).getNombre());
+					check = false;
+				}
+			}else {
+				//No hace nada
 			}
-			
+			break;
+		}
+		case "ElimConfirmar": {
+			check = true;
 			break;
 		}
 		case "FiltroNombre": {
@@ -117,15 +133,45 @@ public class Controller implements ActionListener, ListSelectionListener {
 		}
 		case "SeleccionInfo": {
 			
+			vp.getPanel_info().setVisible(true);
+			vp.getPanel_agregar().setVisible(false);
+			vp.getPanel_eliminar().setVisible(false);
+			vp.getPanel_mostrar().setVisible(false);
+			
+			String sel = vp.getPanel_mostrar().getLista_n().getSelectedValue();
+			for (int i = 0; i < pdao.getLista().size(); i++) {
+				if(pdao.getLista().get(i).getId().equals(sel.substring(0, 3))) {
+					vp.getPanel_info().getImg_pokemon().cargarImagen("src/Assets/PokemonInfoSprites/"+sel.substring(0, 3)+".png");
+					vp.getPanel_info().getId().setText("No."+pdao.getLista().get(i).getId());
+					vp.getPanel_info().getNombre().setText(pdao.getLista().get(i).getNombre().toUpperCase());
+					vp.getPanel_info().getHp().setText(String.valueOf(pdao.getLista().get(i).getHp())+"/"+String.valueOf(pdao.getLista().get(i).getHp()));
+					vp.getPanel_info().getAtk().setText(String.valueOf(pdao.getLista().get(i).getAtaque()));
+					vp.getPanel_info().getDef().setText(String.valueOf(pdao.getLista().get(i).getDefensa()));
+					vp.getPanel_info().getSatk().setText(String.valueOf(pdao.getLista().get(i).getAtk_especial()));
+					vp.getPanel_info().getSdef().setText(String.valueOf(pdao.getLista().get(i).getDef_especial()));
+					vp.getPanel_info().getVel().setText(String.valueOf(pdao.getLista().get(i).getVelocidad()));
+					vp.getPanel_info().getLv().setText(String.valueOf(pdao.getLista().get(i).getLv()));
+					vp.getPanel_info().getTipo1_img().cargarImagen("src/Assets/Tipos/tipo"+pdao.getLista().get(i).getTipo()+".png");
+					
+					if(pdao.getLista().get(i).getTipo_sec() == null) {
+						vp.getPanel_info().getTipo2_img().cargarImagen("src/Assets/Tipos/tipoNada.png");
+					}else {
+						vp.getPanel_info().getTipo2_img().cargarImagen("src/Assets/Tipos/tipo"+pdao.getLista().get(i).getTipo_sec()+".png");
+					}
+					vp.getPanel_info().getPeso().setText(String.valueOf(pdao.getLista().get(i).getPeso()));
+					vp.getPanel_info().getAlt().setText(String.valueOf(pdao.getLista().get(i).getAltura()));
+					vp.getPanel_info().getDesc().setText(pdao.getLista().get(i).getDescripcion());
+					break;
+				}else {
+					vp.getPanel_info().getImg_pokemon().cargarImagen("src/Assets/PokemonSprites/000.png");
+				}
+			}
+			
 			
 			
 			break;
 		}
 		case "AgregConfirmar": {
-
-			System.out.println("Agregado correctamente");
-
-			System.out.println(vp.getPanel_agregar().getCampo_tipo_sec().getSelectedItem());
 
 			if (vp.getPanel_agregar().getCampo_tipo_sec().getSelectedItem().equals("Sin 2' Tipo")) {
 
@@ -165,6 +211,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 				String desc = vp.getPanel_agregar().getCampo_descripcion().getText();
 
 				pdao.crearTipoIndividual(id + "", nombre, lv, al, pe, tipo1, hp, atk, def, satk, sdef, vel, desc);
+				check = true;
 
 				break;
 
@@ -207,8 +254,8 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 				String desc = vp.getPanel_agregar().getCampo_descripcion().getText();
 
-				pdao.crearTipoSecundario(id + "", nombre, lv, al, pe, tipo1, tipo2, hp, atk, def, satk, sdef, vel,
-						desc);
+				pdao.crearTipoSecundario(id + "", nombre, lv, al, pe, tipo1, tipo2, hp, atk, def, satk, sdef, vel, desc);
+				check = true;
 
 			}
 
