@@ -5,46 +5,306 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 
-public class PanelMostrar extends JPanel{
-	
+public class PanelMostrar extends JPanel {
+
 	private JPanel panel_lista;
 	private JLabel bg;
 	private Font fuente;
+	private JList<String> lista_n;
+	private DefaultListModel<String> modelo;
+	private JTextField campo_nombre, campo_id;
+	private JLabel indicador_id, indicador_nombre, indicador_busqueda;
+	private JScrollPane barra_lista;
+	private JButton boton_nombre, boton_id, boton_seleccionar;
+	private JLabel nombre_pokemon, nombre_pokemon_panel;
 	
+	//Imagen Pokemon
+	private ImagenPokemon img_pokemon;
+
 	public PanelMostrar() {
-		
+
 		try {
 			fuente = Font.createFont(Font.TRUETYPE_FONT, new File("src/Assets/Font/Pokemon Classic.ttf"));
-		}catch (FontFormatException e) {
+		} catch (FontFormatException e) {
 			e.printStackTrace();
-		}catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		setBounds(0, 50, 720, 670);
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
-		
+
+		// apartado de mostrar
+
 		bg = new JLabel(new ImageIcon("src/Assets/GUI/bg.gif"));
-		bg.setBounds(0,0,360,500);
+		bg.setBounds(5,6,360,440);
+
+		// filtros para buscar
+
+		indicador_busqueda = new JLabel();
+		indicador_busqueda.setBounds(420, 5, 260, 20);
+		indicador_busqueda.setText("BUSCAR POKEMON POR:");
+		indicador_busqueda.setForeground(Color.WHITE);
+		indicador_busqueda.setFont(fuente);
+		indicador_busqueda.setFont(indicador_busqueda.getFont().deriveFont(Font.BOLD, 12));
+		
+		indicador_nombre = new JLabel();
+		indicador_nombre.setText("NOMBRE: ");
+		indicador_nombre.setBounds(370, 30, 120, 20);
+		indicador_nombre.setForeground(Color.WHITE);
+		indicador_nombre.setFont(fuente);
+		indicador_nombre.setFont(indicador_nombre.getFont().deriveFont(Font.BOLD, 10));
+
+		campo_nombre = new JTextField();
+		campo_nombre.setBounds(450, 35, 100, 14);
+		campo_nombre.setFont(fuente);
+		campo_nombre.setFont(campo_nombre.getFont().deriveFont(Font.BOLD, 12));
+		campo_nombre.setEditable(true);
+		campo_nombre.setBorder(null);
+
+		boton_nombre = new JButton();
+		boton_nombre.setBounds(555, 35, 14, 14);
+		boton_nombre.setBackground(Color.RED);
+
+		indicador_id = new JLabel();
+		indicador_id.setText("ID: ");
+		indicador_id.setBounds(585, 30, 120, 20);
+		indicador_id.setForeground(Color.WHITE);
+		indicador_id.setFont(fuente);
+		indicador_id.setFont(indicador_id.getFont().deriveFont(Font.BOLD, 10));
+
+		campo_id = new JTextField();
+		campo_id.setBounds(615, 35, 70, 14);
+		campo_id.setFont(fuente);
+		campo_id.setFont(campo_id.getFont().deriveFont(Font.BOLD, 12));
+		campo_id.setEditable(true);
+		campo_id.setBorder(null);
+
+		boton_id = new JButton();
+		boton_id.setBounds(690, 35, 14, 14);
+		boton_id.setBackground(Color.RED);
+		
+		boton_seleccionar = new JButton();
+		boton_seleccionar.setBounds(440,427,200,20);
+		boton_seleccionar.setBackground(Color.RED);
+		boton_seleccionar.setText("SELECCIONAR");
+		boton_seleccionar.setForeground(Color.WHITE);
+		boton_seleccionar.setFont(fuente);
+		boton_seleccionar.setFont(boton_seleccionar.getFont().deriveFont(Font.BOLD,12));
+
+		// panel lista de pokemones
+		lista_n = new JList<>();
+		lista_n.setBounds(20, 0, 320, 360);
+		lista_n.setFont(fuente);
+		lista_n.setFont(lista_n.getFont().deriveFont(Font.BOLD,15));
+		modelo = new DefaultListModel<>();
+		lista_n.setModel(modelo);
+		lista_n.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		barra_lista = new JScrollPane(lista_n);
+		barra_lista.setBounds(15, 0, 314, 365);
 		
 		panel_lista = new JPanel();
-		panel_lista.setBounds(360, 6, 340, 380);
+		panel_lista.setBounds(371, 60, 328, 360);
 		panel_lista.setBackground(Color.RED);
 		panel_lista.setLayout(null);
+		panel_lista.add(barra_lista);
 		
+		//Imagen Pokemon
+		img_pokemon = new ImagenPokemon();
+		img_pokemon.setBounds(110,135,150,150);
+		//Nombre Pokemon
+		nombre_pokemon_panel = new JLabel(new ImageIcon("src/Assets/GUI/nombreMostrar.png"));
+		nombre_pokemon_panel.setBounds(10,355,350,88);
+		nombre_pokemon_panel.setBackground(Color.BLACK);
+		nombre_pokemon_panel.setForeground(Color.WHITE);
+		nombre_pokemon_panel.setFont(fuente);
+		nombre_pokemon_panel.setFont(nombre_pokemon_panel.getFont().deriveFont(Font.BOLD, 15));
 		
+		nombre_pokemon = new JLabel();
+		nombre_pokemon.setBounds(25,385,320,30);
+		nombre_pokemon.setForeground(Color.BLACK);
+		nombre_pokemon.setFont(fuente);
+		nombre_pokemon.setFont(nombre_pokemon.getFont().deriveFont(Font.BOLD, 20));
+		nombre_pokemon.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		add(nombre_pokemon);
+		add(nombre_pokemon_panel);
+		add(img_pokemon);
 		add(panel_lista);
+		add(indicador_busqueda);
+		add(indicador_nombre);
+		add(indicador_id);
+		add(campo_id);
+		add(campo_nombre);
+		add(boton_nombre);
+		add(boton_id);
+		add(boton_seleccionar);
 		add(bg);
 		setVisible(true);
-		
+
+	}
+	
+	
+	public JTextField getCampo_nombre() {
+		return campo_nombre;
+	}
+
+
+	public void setCampo_nombre(JTextField campo_nombre) {
+		this.campo_nombre = campo_nombre;
+	}
+
+
+	public JTextField getCampo_id() {
+		return campo_id;
+	}
+
+
+	public void setCampo_id(JTextField campo_id) {
+		this.campo_id = campo_id;
+	}
+
+
+	public JLabel getIndicador_id() {
+		return indicador_id;
+	}
+
+
+	public void setIndicador_id(JLabel indicador_id) {
+		this.indicador_id = indicador_id;
+	}
+
+
+	public JLabel getIndicador_nombre() {
+		return indicador_nombre;
+	}
+
+
+	public void setIndicador_nombre(JLabel indicador_nombre) {
+		this.indicador_nombre = indicador_nombre;
+	}
+
+
+	public JLabel getNombre_pokemon() {
+		return nombre_pokemon;
+	}
+
+
+	public void setNombre_pokemon(JLabel nombre_pokemon) {
+		this.nombre_pokemon = nombre_pokemon;
+	}
+
+
+	public JLabel getNombre_pokemon_panel() {
+		return nombre_pokemon_panel;
+	}
+
+
+	public void setNombre_pokemon_panel(JLabel nombre_pokemon_panel) {
+		this.nombre_pokemon_panel = nombre_pokemon_panel;
+	}
+
+
+	public ImagenPokemon getImg_pokemon() {
+		return img_pokemon;
+	}
+	
+	public void setImg_pokemon(ImagenPokemon img_pokemon) {
+		this.img_pokemon = img_pokemon;
+	}
+
+	public JLabel getIndicador_busqueda() {
+		return indicador_busqueda;
+	}
+
+	public void setIndicador_busqueda(JLabel indicador_busqueda) {
+		this.indicador_busqueda = indicador_busqueda;
+	}
+
+	public JButton getBoton_nombre() {
+		return boton_nombre;
+	}
+
+	public void setBoton_nombre(JButton boton_nombre) {
+		this.boton_nombre = boton_nombre;
+	}
+
+	public JButton getBoton_id() {
+		return boton_id;
+	}
+
+	public void setBoton_id(JButton boton_id) {
+		this.boton_id = boton_id;
+	}
+
+	public JButton getBoton_seleccionar() {
+		return boton_seleccionar;
+	}
+
+	public void setBoton_seleccionar(JButton boton_seleccionar) {
+		this.boton_seleccionar = boton_seleccionar;
+	}
+
+	public JScrollPane getBarra_lista() {
+		return barra_lista;
+	}
+
+	public void setBarra_lista(JScrollPane barra_lista) {
+		this.barra_lista = barra_lista;
+	}
+
+	public JPanel getPanel_lista() {
+		return panel_lista;
+	}
+
+	public void setPanel_lista(JPanel panel_lista) {
+		this.panel_lista = panel_lista;
+	}
+
+	public JLabel getBg() {
+		return bg;
+	}
+
+	public void setBg(JLabel bg) {
+		this.bg = bg;
+	}
+
+	public Font getFuente() {
+		return fuente;
+	}
+
+	public void setFuente(Font fuente) {
+		this.fuente = fuente;
+	}
+
+	public JList<String> getLista_n() {
+		return lista_n;
+	}
+
+	public void setLista_n(JList<String> lista_n) {
+		this.lista_n = lista_n;
+	}
+
+	public DefaultListModel<String> getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(DefaultListModel<String> modelo) {
+		this.modelo = modelo;
 	}
 
 }

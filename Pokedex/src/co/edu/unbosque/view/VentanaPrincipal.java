@@ -9,28 +9,46 @@ public class VentanaPrincipal extends JFrame{
 	private PanelAgregar panel_agregar;
 	private PanelMostrar panel_mostrar;
 	private PanelEliminar panel_eliminar;
+	private PanelInfo panel_info;
 
 	public VentanaPrincipal() {
 		setTitle("Pokedex");
 		ImageIcon img = new ImageIcon("src/Assets/PokemonSprites/Bulbasaur_icon.png");
 		setIconImage(img.getImage());
-		setSize(720, 480);
+		setSize(720, 540);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setLayout(null);
 		setFocusable(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		panel_crud = new PanelCRUD();
 		panel_agregar = new PanelAgregar();
 		panel_mostrar = new PanelMostrar();
 		panel_eliminar = new PanelEliminar();
+		panel_info = new PanelInfo();
 		
 		add(panel_crud);
-		add(panel_agregar).setVisible(true);
-		add(panel_mostrar).setVisible(false);
+		add(panel_agregar).setVisible(false);
+		add(panel_mostrar).setVisible(true);
 		add(panel_eliminar).setVisible(false);
+		add(panel_info).setVisible(false);
 		setVisible(true);
 	}
+	
+	
+
+	public PanelInfo getPanel_info() {
+		return panel_info;
+	}
+
+
+
+	public void setPanel_info(PanelInfo panel_info) {
+		this.panel_info = panel_info;
+	}
+
+
 
 	public PanelCRUD getPanel_crud() {
 		return panel_crud;
