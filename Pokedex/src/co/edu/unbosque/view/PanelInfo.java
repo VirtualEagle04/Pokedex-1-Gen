@@ -47,11 +47,7 @@ public class PanelInfo extends JPanel{
 		
 		bg = new JLabel(imageIcon);
 		bg.setBounds(-10, -20, 720, 490);
-		
-		tipo1_img = new JLabel(new ImageIcon("src/Assets/Tipos/tipoNormal.png"));
-		tipo1_img.setBounds(500, 320 , 32, 12);
 
-		add(tipo1_img, JLayeredPane.DRAG_LAYER);
 		add(bg, JLayeredPane.DEFAULT_LAYER);
 		
 		

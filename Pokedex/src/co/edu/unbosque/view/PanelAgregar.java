@@ -286,7 +286,7 @@ public class PanelAgregar extends JPanel {
 		pregunta.setBounds(335, 40, 390, 400);
 
 		panel_agregar = new JPanel();
-		panel_agregar.setBounds(5, 6, 360, 440);
+		panel_agregar.setBounds(5, 6, 356, 440);
 		panel_agregar.setBackground(Color.RED);
 		panel_agregar.setLayout(null);
 		panel_agregar.add(panel_creacion);

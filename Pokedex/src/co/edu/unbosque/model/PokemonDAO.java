@@ -47,7 +47,7 @@ public class PokemonDAO extends OperacionesDAO{
 		lista.add(new PokemonDTO("037", "Vulpix", 1, 0.6f, 9.9f, "Fuego", 38, 41, 40, 50, 65, 65, "Cuando nace solo tiene una cola, pero a medida que crece, esta se va dividiendo desde al punta."));
 		lista.add(new PokemonDTO("038", "Ninetales", 36, 1.1f, 19.9f, "Fuego", 73, 76, 75, 81, 100, 100, "Muy inteligente y vengativo. Agarrar una de sus colas podria causar 1000 anios de maldicion."));
 		lista.add(new PokemonDTO("039", "Jigglypuff", 16, 0.5f, 5.5f, "Normal", "Hada", 115, 45, 20, 45, 25, 20, "Cuando sus ojos se iluminan, canta una secreta melodia con la que duerme a sus enemigos."));
-		lista.add(new PokemonDTO("040", "Wigglypuff", 32, 1f, 12f, "Normal", "Hada", 140, 70, 45, 85, 50, 45, "Su cuerpo es blando y gomoso. Cuando se enfada traga aire y se hincha enormemente."));
+		lista.add(new PokemonDTO("040", "Wigglytuff", 32, 1f, 12f, "Normal", "Hada", 140, 70, 45, 85, 50, 45, "Su cuerpo es blando y gomoso. Cuando se enfada traga aire y se hincha enormemente."));
 		lista.add(new PokemonDTO("041", "Zubat", 1, 0.8f, 7.5f, "Veneno", "Volador", 40, 45, 35, 30, 40, 55, "Forma colonias en lugar oscuras. Usa ultrasonidos para idenficar y acercarse a los objetos."));
 		lista.add(new PokemonDTO("042", "Golbat", 16, 1.6f, 55f, "Veneno", "Volador", 75, 80, 70, 65, 75, 90, "Cuando ataque, seguira chupando energia de su victima, aunque pese tanto que ya no pueda volar."));
 		lista.add(new PokemonDTO("043", "Oddish", 1, 0.5f, 5.4f, "Planta", "Veneno", 45, 50, 55, 75, 65, 30, "Durante el dia entierra su cara en el suelo. Merodea por la noche plantando sus semillas."));
@@ -58,7 +58,7 @@ public class PokemonDAO extends OperacionesDAO{
 		lista.add(new PokemonDTO("048", "Venonat", 1, 1f, 30f, "Bicho", "Veneno", 60, 55, 50, 40, 55, 45, "Vive entre las sombras de altos arboles, donde come insectos. Le atrae la luz por la noche."));
 		lista.add(new PokemonDTO("049", "Venomoth", 16, 1.5f, 12.5f, "Bicho", "Veneno", 70, 65, 60, 90, 75, 90, "El polvillo que cubre sus alas es de distinto color segun el tipo de veneno que lleve."));
 		lista.add(new PokemonDTO("050", "Diglett", 16, 0.2f, 0.8f, "Tierra", 10, 55, 25, 35, 45, 95, "Vive un metro opr debajo del suelo, donde se alimenta de raices. Tambien aparece en la superficie."));
-		lista.add(new PokemonDTO("051", "Dugrio", 26, 0.7f, 33.3f, "Tierra", 35, 100, 50, 50, 70, 120, "Un trio de Diglett. Causa enormes terremotos cavando 80 km por debajo del suelo."));
+		lista.add(new PokemonDTO("051", "Dugtrio", 26, 0.7f, 33.3f, "Tierra", 35, 100, 50, 50, 70, 120, "Un trio de Diglett. Causa enormes terremotos cavando 80 km por debajo del suelo."));
 		lista.add(new PokemonDTO("052", "Meowth", 1, 0.4f, 4.2f, "Normal", 40, 45, 35, 40, 40, 90, "Adora los objetos redondos. De noche, camina por las calles en busca de monedas perdidas."));
 		lista.add(new PokemonDTO("053", "Persian", 28, 1f, 32f, "Normal", 65, 70, 60, 65, 65, 115, "Aunque es muy admirado por su pelo, es dificil de entrenar como mascota por su voluble maldad."));
 		lista.add(new PokemonDTO("054", "Psyduck", 1, 0.8f, 19.6f, "Agua", 50, 52, 48, 65, 50, 55, "Aunque calma al enemigo con su vacia mirada, este Pokemon usara poderes psicoquineticos."));
@@ -72,13 +72,13 @@ public class PokemonDAO extends OperacionesDAO{
 		lista.add(new PokemonDTO("062", "Poliwrath", 32, 1.3f, 54f, "Agua", "Lucha", 90, 95, 95, 70, 90, 70, "Experto nadador tanto en brazo como crawl. Gana facilmente a todo nadador humano."));
 		lista.add(new PokemonDTO("063", "Abra", 1, 0.9f, 19.5f, "Psiquico", 25, 20, 15, 105, 55, 90, "Con su capacidad de leer la mente, detecta cualquier peligro y se teletransporta a un lugar seguro."));
 		lista.add(new PokemonDTO("064", "Kadabra", 16, 1.3f, 56.5f, "Psiquico", 40, 35, 30, 120, 70, 105, "Emite ondas-alfa especiales de su cuerpo que causan jaquecasa todo aquel que se acerca."));
-		lista.add(new PokemonDTO("065", "Alakasam", 32, 1.5f, 48f, "Psiquico", 55, 50, 45, 135, 95, 120, "Su cerebro puede ganar al de un super-ordenador. Tiene un coeficiente intelectual de 5000."));
+		lista.add(new PokemonDTO("065", "Alakazam", 32, 1.5f, 48f, "Psiquico", 55, 50, 45, 135, 95, 120, "Su cerebro puede ganar al de un super-ordenador. Tiene un coeficiente intelectual de 5000."));
 		lista.add(new PokemonDTO("066", "Machop", 1, 0.8f, 19.5f, "Lucha", 70, 80, 50, 35, 35, 35, "Le encanta ser musculoso. Se entrena en todo tipo de arte marcial para ser aun mas fuerte."));
 		lista.add(new PokemonDTO("067", "Machoke", 28, 1.5f, 70.5f, "Lucha", 80, 100, 70, 50, 60, 45, "Su musculoso cuerpo es tan fuerte que usa un cinto anti-fuerza para controlar sus movimientos."));
 		lista.add(new PokemonDTO("068", "Machamp", 32, 1.6f, 130f, "Lucha", 90, 130, 80, 65, 85, 55, "Con sus fuertes musculos, lanza bestiales punietazos y envia a su victima al lejano horizonte."));
 		lista.add(new PokemonDTO("069", "Bellsprout", 1, 0.7f, 4f, "Planta", "Veneno", 50, 75, 35, 70, 30, 40, "Un Pokemon carnivoro que caza insectos. Usa sus raices para absorber humedad."));
 		lista.add(new PokemonDTO("070", "Weepinbell", 21, 1f, 6.4f, "Planta", "Veneno", 65, 90, 50, 85, 45, 55, "Escupe polvo-veneno para envenenar al enemigo, y luego lo liquida con su acido."));
-		lista.add(new PokemonDTO("071", "Victree", 32, 1.7f, 15.5f, "Planta", "Veneno", 80, 105, 65, 100, 70, 70, "Vive en grandes colonias en el interior de las junglas, aunque nadie ha podido verificarlo."));
+		lista.add(new PokemonDTO("071", "Victreebel", 32, 1.7f, 15.5f, "Planta", "Veneno", 80, 105, 65, 100, 70, 70, "Vive en grandes colonias en el interior de las junglas, aunque nadie ha podido verificarlo."));
 		lista.add(new PokemonDTO("072", "Tentacool", 1, 0.9f, 45.5f, "Agua", "Veneno", 40, 40, 35, 50, 100, 70, "Va a la deriva a poca profundidad. Si es pescado por accidente, el castigo sera su punzante acido."));
 		lista.add(new PokemonDTO("073", "Tentacruel", 30, 1.6f, 55f, "Agua", "Veneno", 80, 70, 65, 80, 120, 100, "De tentaculos cortos, cuando caza los extiende para atrapar e inmovilizara a su presa."));
 		lista.add(new PokemonDTO("074", "Geodude", 1, 0.4f, 20f, "Roca", "Tierra", 40, 80, 100, 30, 30, 20, "Aparece en llanos y montanias. Semejantes a las rocas, la gente se tropieza con ellos o los pisa."));

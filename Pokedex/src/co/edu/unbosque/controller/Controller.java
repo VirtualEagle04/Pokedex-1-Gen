@@ -2,14 +2,19 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import co.edu.unbosque.model.PokemonDAO;
 import co.edu.unbosque.view.VentanaPrincipal;
 
-public class Controller implements ActionListener {
+public class Controller implements ActionListener, ListSelectionListener {
 
 	private VentanaPrincipal vp;
 	private PokemonDAO pdao;
+	private ArrayList<String> valores;
 
 	public Controller() {
 
@@ -19,9 +24,32 @@ public class Controller implements ActionListener {
 		vp = new VentanaPrincipal();
 		pdao = new PokemonDAO();
 		agregarLectores();
+		valores = new ArrayList<>();
 	}
+	
 
+	
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		for (int i = 0; i < pdao.getLista().size(); i++) {
+			
+			if(vp.getPanel_mostrar().getLista_n().getSelectedValue().substring(0, 3).equals(pdao.getLista().get(i).getId())) {
+				
+					String directorio = "src/Assets/PokemonSprites/"+pdao.getLista().get(i).getNombre()+"_icon.png";
+					vp.getPanel_mostrar().getImg_pokemon().cargarImagen(directorio);
+					vp.getPanel_mostrar().getNombre_pokemon().setText(pdao.getLista().get(i).getNombre());
+				
+				break;
+			}else {
+				vp.getPanel_mostrar().getImg_pokemon().cargarImagen("src/Assets/PokemonSprites/000.png");
+				vp.getPanel_mostrar().getNombre_pokemon().setText(pdao.getLista().get(i).getNombre());
+			}
+		}
+		
+	}
 	public void agregarLectores() {
+		vp.getPanel_mostrar().getLista_n().addListSelectionListener(this);
+		
 		vp.getPanel_crud().getAgregar().addActionListener(this);
 		vp.getPanel_crud().getAgregar().setActionCommand("CrudAgregar");
 
@@ -33,13 +61,24 @@ public class Controller implements ActionListener {
 
 		vp.getPanel_crud().getMostrar().addActionListener(this);
 		vp.getPanel_crud().getMostrar().setActionCommand("CrudMostrar");
+		
+		vp.getPanel_mostrar().getBoton_seleccionar().addActionListener(this);
+		vp.getPanel_mostrar().getBoton_seleccionar().setActionCommand("SeleccionInfo");
+		
+		//Filtros Mostrar
+		vp.getPanel_mostrar().getBoton_nombre().addActionListener(this);
+		vp.getPanel_mostrar().getBoton_nombre().setActionCommand("FiltroNombre");
+		
+		vp.getPanel_mostrar().getBoton_id().addActionListener(this);
+		vp.getPanel_mostrar().getBoton_id().setActionCommand("FiltroID");
+		
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionCommand()) {
 		case "CrudAgregar": {
-			System.out.println("Agregar");
 			vp.getPanel_agregar().setVisible(true);
 			vp.getPanel_mostrar().setVisible(false);
 			vp.getPanel_eliminar().setVisible(false);
@@ -47,7 +86,6 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "CrudEliminar": {
-			System.out.println("Eliminar");
 			vp.getPanel_agregar().setVisible(false);
 			vp.getPanel_mostrar().setVisible(false);
 			vp.getPanel_eliminar().setVisible(true);
@@ -55,17 +93,30 @@ public class Controller implements ActionListener {
 			break;
 		}
 		case "CrudMostrar": {
-			System.out.println("Mostrar");
 			vp.getPanel_agregar().setVisible(false);
 			vp.getPanel_mostrar().setVisible(true);
 			vp.getPanel_eliminar().setVisible(false);
 			
 			for (int i = 0; i < pdao.getLista().size(); i++) {
-				
-				
 				vp.getPanel_mostrar().getModelo().addElement(pdao.getLista().get(i).getId()+" "+pdao.getLista().get(i).getNombre());
-				
+				valores.add(pdao.getLista().get(i).getId()+" "+pdao.getLista().get(i).getNombre());
 			}
+			
+			break;
+		}
+		case "FiltroNombre": {
+			
+			
+			break;
+		}
+		case "FiltroID": {
+			
+			
+			
+			break;
+		}
+		case "SeleccionInfo": {
+			
 			
 			
 			break;
@@ -78,8 +129,7 @@ public class Controller implements ActionListener {
 
 			if (vp.getPanel_agregar().getCampo_tipo_sec().getSelectedItem().equals("Sin 2' Tipo")) {
 
-				String id_temp = vp.getPanel_agregar().getCampo_id().getText();
-				int id = Integer.parseInt(id_temp);
+				String id = vp.getPanel_agregar().getCampo_id().getText();
 
 				String nombre = vp.getPanel_agregar().getCampo_nombre().getText();
 
@@ -120,8 +170,7 @@ public class Controller implements ActionListener {
 
 			} else {
 
-				String id_temp = vp.getPanel_agregar().getCampo_id().getText();
-				int id = Integer.parseInt(id_temp);
+				String id = vp.getPanel_agregar().getCampo_id().getText();
 
 				String nombre = vp.getPanel_agregar().getCampo_nombre().getText();
 
@@ -165,9 +214,12 @@ public class Controller implements ActionListener {
 
 			break;
 		}
+		
+		
 
 		default:
 		}
 
 	}
+
 }

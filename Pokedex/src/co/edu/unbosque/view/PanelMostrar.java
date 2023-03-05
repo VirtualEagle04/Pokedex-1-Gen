@@ -14,6 +14,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 
 public class PanelMostrar extends JPanel {
 
@@ -26,6 +28,10 @@ public class PanelMostrar extends JPanel {
 	private JLabel indicador_id, indicador_nombre, indicador_busqueda;
 	private JScrollPane barra_lista;
 	private JButton boton_nombre, boton_id, boton_seleccionar;
+	private JLabel nombre_pokemon, nombre_pokemon_panel;
+	
+	//Imagen Pokemon
+	private ImagenPokemon img_pokemon;
 
 	public PanelMostrar() {
 
@@ -44,8 +50,7 @@ public class PanelMostrar extends JPanel {
 		// apartado de mostrar
 
 		bg = new JLabel(new ImageIcon("src/Assets/GUI/bg.gif"));
-<<<<<<< Updated upstream
-		bg.setBounds(0, 0, 360, 500);
+		bg.setBounds(5,6,360,440);
 
 		// filtros para buscar
 
@@ -55,7 +60,7 @@ public class PanelMostrar extends JPanel {
 		indicador_busqueda.setForeground(Color.WHITE);
 		indicador_busqueda.setFont(fuente);
 		indicador_busqueda.setFont(indicador_busqueda.getFont().deriveFont(Font.BOLD, 12));
-
+		
 		indicador_nombre = new JLabel();
 		indicador_nombre.setText("NOMBRE: ");
 		indicador_nombre.setBounds(370, 30, 120, 20);
@@ -68,6 +73,7 @@ public class PanelMostrar extends JPanel {
 		campo_nombre.setFont(fuente);
 		campo_nombre.setFont(campo_nombre.getFont().deriveFont(Font.BOLD, 12));
 		campo_nombre.setEditable(true);
+		campo_nombre.setBorder(null);
 
 		boton_nombre = new JButton();
 		boton_nombre.setBounds(555, 35, 14, 14);
@@ -85,16 +91,14 @@ public class PanelMostrar extends JPanel {
 		campo_id.setFont(fuente);
 		campo_id.setFont(campo_id.getFont().deriveFont(Font.BOLD, 12));
 		campo_id.setEditable(true);
+		campo_id.setBorder(null);
 
 		boton_id = new JButton();
 		boton_id.setBounds(690, 35, 14, 14);
 		boton_id.setBackground(Color.RED);
-=======
-		bg.setBounds(5,6,360,440);
->>>>>>> Stashed changes
 		
 		boton_seleccionar = new JButton();
-		boton_seleccionar.setBounds(450,427,200,20);
+		boton_seleccionar.setBounds(440,427,200,20);
 		boton_seleccionar.setBackground(Color.RED);
 		boton_seleccionar.setText("SELECCIONAR");
 		boton_seleccionar.setForeground(Color.WHITE);
@@ -102,39 +106,125 @@ public class PanelMostrar extends JPanel {
 		boton_seleccionar.setFont(boton_seleccionar.getFont().deriveFont(Font.BOLD,12));
 
 		// panel lista de pokemones
-		panel_lista = new JPanel();
-<<<<<<< Updated upstream
-		panel_lista.setBounds(371, 60, 340, 360);
-=======
-		panel_lista.setBounds(360, 6, 340, 440);
->>>>>>> Stashed changes
-		panel_lista.setBackground(Color.RED);
-		panel_lista.setLayout(null);
-
 		lista_n = new JList<>();
 		lista_n.setBounds(20, 0, 320, 360);
 		lista_n.setFont(fuente);
 		lista_n.setFont(lista_n.getFont().deriveFont(Font.BOLD,15));
-
-		barra_lista = new JScrollPane(lista_n);
-		barra_lista.setBounds(0, 0, 340, 365);
-		
 		modelo = new DefaultListModel<>();
 		lista_n.setModel(modelo);
-
+		lista_n.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		barra_lista = new JScrollPane(lista_n);
+		barra_lista.setBounds(15, 0, 314, 365);
+		
+		panel_lista = new JPanel();
+		panel_lista.setBounds(371, 60, 328, 360);
+		panel_lista.setBackground(Color.RED);
+		panel_lista.setLayout(null);
+		panel_lista.add(barra_lista);
+		
+		//Imagen Pokemon
+		img_pokemon = new ImagenPokemon();
+		img_pokemon.setBounds(110,135,150,150);
+		//Nombre Pokemon
+		nombre_pokemon_panel = new JLabel(new ImageIcon("src/Assets/GUI/nombreMostrar.png"));
+		nombre_pokemon_panel.setBounds(10,355,350,88);
+		nombre_pokemon_panel.setBackground(Color.BLACK);
+		nombre_pokemon_panel.setForeground(Color.WHITE);
+		nombre_pokemon_panel.setFont(fuente);
+		nombre_pokemon_panel.setFont(nombre_pokemon_panel.getFont().deriveFont(Font.BOLD, 15));
+		
+		nombre_pokemon = new JLabel();
+		nombre_pokemon.setBounds(25,385,320,30);
+		nombre_pokemon.setForeground(Color.BLACK);
+		nombre_pokemon.setFont(fuente);
+		nombre_pokemon.setFont(nombre_pokemon.getFont().deriveFont(Font.BOLD, 20));
+		nombre_pokemon.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		add(nombre_pokemon);
+		add(nombre_pokemon_panel);
+		add(img_pokemon);
 		add(panel_lista);
 		add(indicador_busqueda);
 		add(indicador_nombre);
-		add(campo_nombre);
-		add(boton_nombre);
 		add(indicador_id);
 		add(campo_id);
+		add(campo_nombre);
+		add(boton_nombre);
 		add(boton_id);
 		add(boton_seleccionar);
-		panel_lista.add(barra_lista);
 		add(bg);
 		setVisible(true);
 
+	}
+	
+	
+	public JTextField getCampo_nombre() {
+		return campo_nombre;
+	}
+
+
+	public void setCampo_nombre(JTextField campo_nombre) {
+		this.campo_nombre = campo_nombre;
+	}
+
+
+	public JTextField getCampo_id() {
+		return campo_id;
+	}
+
+
+	public void setCampo_id(JTextField campo_id) {
+		this.campo_id = campo_id;
+	}
+
+
+	public JLabel getIndicador_id() {
+		return indicador_id;
+	}
+
+
+	public void setIndicador_id(JLabel indicador_id) {
+		this.indicador_id = indicador_id;
+	}
+
+
+	public JLabel getIndicador_nombre() {
+		return indicador_nombre;
+	}
+
+
+	public void setIndicador_nombre(JLabel indicador_nombre) {
+		this.indicador_nombre = indicador_nombre;
+	}
+
+
+	public JLabel getNombre_pokemon() {
+		return nombre_pokemon;
+	}
+
+
+	public void setNombre_pokemon(JLabel nombre_pokemon) {
+		this.nombre_pokemon = nombre_pokemon;
+	}
+
+
+	public JLabel getNombre_pokemon_panel() {
+		return nombre_pokemon_panel;
+	}
+
+
+	public void setNombre_pokemon_panel(JLabel nombre_pokemon_panel) {
+		this.nombre_pokemon_panel = nombre_pokemon_panel;
+	}
+
+
+	public ImagenPokemon getImg_pokemon() {
+		return img_pokemon;
+	}
+	
+	public void setImg_pokemon(ImagenPokemon img_pokemon) {
+		this.img_pokemon = img_pokemon;
 	}
 
 	public JLabel getIndicador_busqueda() {
@@ -167,38 +257,6 @@ public class PanelMostrar extends JPanel {
 
 	public void setBoton_seleccionar(JButton boton_seleccionar) {
 		this.boton_seleccionar = boton_seleccionar;
-	}
-
-	public JTextField getCampo_nombre() {
-		return campo_nombre;
-	}
-
-	public void setCampo_nombre(JTextField campo_nombre) {
-		this.campo_nombre = campo_nombre;
-	}
-
-	public JTextField getCampo_id() {
-		return campo_id;
-	}
-
-	public void setCampo_id(JTextField campo_id) {
-		this.campo_id = campo_id;
-	}
-
-	public JLabel getIndicador_id() {
-		return indicador_id;
-	}
-
-	public void setIndicador_id(JLabel indicador_id) {
-		this.indicador_id = indicador_id;
-	}
-
-	public JLabel getIndicador_nombre() {
-		return indicador_nombre;
-	}
-
-	public void setIndicador_nombre(JLabel indicador_nombre) {
-		this.indicador_nombre = indicador_nombre;
 	}
 
 	public JScrollPane getBarra_lista() {
