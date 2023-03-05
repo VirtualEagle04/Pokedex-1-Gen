@@ -57,6 +57,7 @@ public class PanelAgregar extends JPanel {
 		campo_id.setBounds(135, 10, 60, 20);
 		campo_id.setFont(fuente);
 		campo_id.setFont(campo_id.getFont().deriveFont(Font.BOLD, 15));
+		campo_id.setForeground(Color.BLACK);
 
 		ind_nombre = new JLabel("NOMBRE");
 		ind_nombre.setBounds(30, 30, 105, 15);
@@ -68,6 +69,7 @@ public class PanelAgregar extends JPanel {
 		campo_nombre.setBounds(135, 30, 150, 20);
 		campo_nombre.setFont(fuente);
 		campo_nombre.setFont(campo_nombre.getFont().deriveFont(Font.BOLD, 12));
+		campo_nombre.setForeground(Color.BLACK);
 
 		ind_lv = new JLabel("LV");
 		ind_lv.setBounds(30, 50, 100, 15);
@@ -79,6 +81,7 @@ public class PanelAgregar extends JPanel {
 		campo_lv.setBounds(135, 50, 60, 20);
 		campo_lv.setFont(fuente);
 		campo_lv.setFont(campo_lv.getFont().deriveFont(Font.BOLD, 15));
+		campo_lv.setForeground(Color.BLACK);
 
 		ind_al = new JLabel("ALT");
 		ind_al.setBounds(30, 70, 100, 20);
@@ -90,6 +93,7 @@ public class PanelAgregar extends JPanel {
 		campo_al.setBounds(135, 70, 60, 20);
 		campo_al.setFont(fuente);
 		campo_al.setFont(ind_al.getFont().deriveFont(Font.BOLD, 15));
+		campo_al.setForeground(Color.BLACK);
 		
 		unidades_m = new JLabel("m.");
 		unidades_m.setBounds(197, 70, 60, 20);
@@ -106,6 +110,7 @@ public class PanelAgregar extends JPanel {
 		campo_pe.setBounds(135, 90, 60, 20);
 		campo_pe.setFont(fuente);
 		campo_pe.setFont(ind_al.getFont().deriveFont(Font.BOLD, 15));
+		campo_pe.setForeground(Color.BLACK);
 		
 		unidades_kg = new JLabel("Kg.");
 		unidades_kg.setBounds(197, 90, 60, 20);
@@ -122,6 +127,7 @@ public class PanelAgregar extends JPanel {
 		campo_hp.setBounds(135, 110, 60, 20);
 		campo_hp.setFont(fuente);
 		campo_hp.setFont(campo_hp.getFont().deriveFont(Font.BOLD, 15));
+		campo_hp.setForeground(Color.BLACK);
 
 		ind_atk = new JLabel("ATK");
 		ind_atk.setBounds(30, 130, 100, 15);
@@ -133,6 +139,7 @@ public class PanelAgregar extends JPanel {
 		campo_atk.setBounds(135, 130, 60, 20);
 		campo_atk.setFont(fuente);
 		campo_atk.setFont(campo_atk.getFont().deriveFont(Font.BOLD, 15));
+		campo_atk.setForeground(Color.BLACK);
 
 		ind_def = new JLabel("DEF");
 		ind_def.setBounds(30, 150, 100, 15);
@@ -144,6 +151,7 @@ public class PanelAgregar extends JPanel {
 		campo_def.setBounds(135, 150, 60, 20);
 		campo_def.setFont(fuente);
 		campo_def.setFont(campo_def.getFont().deriveFont(Font.BOLD, 15));
+		campo_def.setForeground(Color.BLACK);
 
 		ind_satk = new JLabel("SP.ATK");
 		ind_satk.setBounds(30, 170, 100, 15);
@@ -155,6 +163,7 @@ public class PanelAgregar extends JPanel {
 		campo_satk.setBounds(135, 170, 60, 20);
 		campo_satk.setFont(fuente);
 		campo_satk.setFont(campo_satk.getFont().deriveFont(Font.BOLD, 15));
+		campo_satk.setForeground(Color.BLACK);
 
 		ind_sdef = new JLabel("SP.DEF");
 		ind_sdef.setBounds(30, 190, 100, 15);
@@ -166,6 +175,7 @@ public class PanelAgregar extends JPanel {
 		campo_sdef.setBounds(135, 190, 60, 20);
 		campo_sdef.setFont(fuente);
 		campo_sdef.setFont(campo_sdef.getFont().deriveFont(Font.BOLD, 15));
+		campo_sdef.setForeground(Color.BLACK);
 
 		ind_vel = new JLabel("VEL");
 		ind_vel.setBounds(30, 210, 60, 15);
@@ -177,6 +187,7 @@ public class PanelAgregar extends JPanel {
 		campo_vel.setBounds(135, 210, 60, 20);
 		campo_vel.setFont(fuente);
 		campo_vel.setFont(campo_vel.getFont().deriveFont(Font.BOLD, 15));
+		campo_vel.setForeground(Color.BLACK);
 
 		ind_tipo = new JLabel("TIPO");
 		ind_tipo.setBounds(30, 230, 70, 15);
@@ -217,6 +228,7 @@ public class PanelAgregar extends JPanel {
 		campo_descripcion.setEditable(true);
 		campo_descripcion.setBounds(30, 320, 270, 85);
 		campo_descripcion.setBackground(Color.LIGHT_GRAY);
+		campo_descripcion.setForeground(Color.BLACK);
 		campo_descripcion.setLineWrap(true);
 		campo_descripcion.setWrapStyleWord(true);
 		campo_descripcion.setFont(fuente);

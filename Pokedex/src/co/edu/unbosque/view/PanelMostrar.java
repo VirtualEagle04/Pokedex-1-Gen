@@ -24,7 +24,7 @@ public class PanelMostrar extends JPanel {
 	private Font fuente;
 	private JList<String> lista_n;
 	private DefaultListModel<String> modelo;
-	private JTextField campo_nombre, campo_id;
+	private JTextField campo_filtro;
 	private JLabel indicador_id, indicador_nombre, indicador_busqueda;
 	private JScrollPane barra_lista;
 	private JButton boton_nombre, boton_id, boton_seleccionar;
@@ -62,18 +62,18 @@ public class PanelMostrar extends JPanel {
 		indicador_busqueda.setFont(indicador_busqueda.getFont().deriveFont(Font.BOLD, 12));
 		
 		indicador_nombre = new JLabel();
-		indicador_nombre.setText("NOMBRE: ");
+		indicador_nombre.setText("ID/NOMBRE: ");
 		indicador_nombre.setBounds(370, 30, 120, 20);
 		indicador_nombre.setForeground(Color.WHITE);
 		indicador_nombre.setFont(fuente);
 		indicador_nombre.setFont(indicador_nombre.getFont().deriveFont(Font.BOLD, 10));
 
-		campo_nombre = new JTextField();
-		campo_nombre.setBounds(450, 35, 100, 14);
-		campo_nombre.setFont(fuente);
-		campo_nombre.setFont(campo_nombre.getFont().deriveFont(Font.BOLD, 12));
-		campo_nombre.setEditable(true);
-		campo_nombre.setBorder(null);
+		campo_filtro = new JTextField();
+		campo_filtro.setBounds(480, 35, 200, 14);
+		campo_filtro.setFont(fuente);
+		campo_filtro.setFont(campo_filtro.getFont().deriveFont(Font.BOLD, 12));
+		campo_filtro.setEditable(true);
+		campo_filtro.setBorder(null);
 
 		boton_nombre = new JButton();
 		boton_nombre.setBounds(555, 35, 14, 14);
@@ -85,13 +85,6 @@ public class PanelMostrar extends JPanel {
 		indicador_id.setForeground(Color.WHITE);
 		indicador_id.setFont(fuente);
 		indicador_id.setFont(indicador_id.getFont().deriveFont(Font.BOLD, 10));
-
-		campo_id = new JTextField();
-		campo_id.setBounds(615, 35, 70, 14);
-		campo_id.setFont(fuente);
-		campo_id.setFont(campo_id.getFont().deriveFont(Font.BOLD, 12));
-		campo_id.setEditable(true);
-		campo_id.setBorder(null);
 
 		boton_id = new JButton();
 		boton_id.setBounds(690, 35, 14, 14);
@@ -147,35 +140,21 @@ public class PanelMostrar extends JPanel {
 		add(panel_lista);
 		add(indicador_busqueda);
 		add(indicador_nombre);
-		add(indicador_id);
-		add(campo_id);
-		add(campo_nombre);
-		add(boton_nombre);
-		add(boton_id);
+		add(campo_filtro);
 		add(boton_seleccionar);
 		add(bg);
 		setVisible(true);
 
 	}
 	
-	
-	public JTextField getCampo_nombre() {
-		return campo_nombre;
+
+	public JTextField getCampo_filtro() {
+		return campo_filtro;
 	}
 
 
-	public void setCampo_nombre(JTextField campo_nombre) {
-		this.campo_nombre = campo_nombre;
-	}
-
-
-	public JTextField getCampo_id() {
-		return campo_id;
-	}
-
-
-	public void setCampo_id(JTextField campo_id) {
-		this.campo_id = campo_id;
+	public void setCampo_filtro(JTextField campo_filtro) {
+		this.campo_filtro = campo_filtro;
 	}
 
 
@@ -233,22 +212,6 @@ public class PanelMostrar extends JPanel {
 
 	public void setIndicador_busqueda(JLabel indicador_busqueda) {
 		this.indicador_busqueda = indicador_busqueda;
-	}
-
-	public JButton getBoton_nombre() {
-		return boton_nombre;
-	}
-
-	public void setBoton_nombre(JButton boton_nombre) {
-		this.boton_nombre = boton_nombre;
-	}
-
-	public JButton getBoton_id() {
-		return boton_id;
-	}
-
-	public void setBoton_id(JButton boton_id) {
-		this.boton_id = boton_id;
 	}
 
 	public JButton getBoton_seleccionar() {
