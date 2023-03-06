@@ -10,6 +10,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -20,6 +21,7 @@ import javax.swing.SwingConstants;
 public class PanelMostrar extends JPanel {
 
 	private JPanel panel_lista;
+	private JLabel panel_lista_bg;
 	private JLabel bg;
 	private Font fuente;
 	private JList<String> lista_n;
@@ -92,11 +94,12 @@ public class PanelMostrar extends JPanel {
 		
 		boton_seleccionar = new JButton();
 		boton_seleccionar.setBounds(440,427,200,20);
-		boton_seleccionar.setBackground(Color.RED);
-		boton_seleccionar.setText("SELECCIONAR");
+		boton_seleccionar.setBackground(Color.DARK_GRAY);
 		boton_seleccionar.setForeground(Color.WHITE);
 		boton_seleccionar.setFont(fuente);
 		boton_seleccionar.setFont(boton_seleccionar.getFont().deriveFont(Font.BOLD,12));
+		boton_seleccionar.setIcon(new ImageIcon("src/Assets/GUI/botonSeleccionar.png"));
+		boton_seleccionar.setBorder(null);
 
 		// panel lista de pokemones
 		lista_n = new JList<>();
@@ -109,12 +112,17 @@ public class PanelMostrar extends JPanel {
 		
 		barra_lista = new JScrollPane(lista_n);
 		barra_lista.setBounds(15, 0, 314, 365);
+		barra_lista.setBorder(null);
+		
+		panel_lista_bg = new JLabel(new ImageIcon("src/Assets/GUI/panelLista.png"));
+		panel_lista_bg.setBounds(0,0, 328, 360);
 		
 		panel_lista = new JPanel();
 		panel_lista.setBounds(371, 60, 328, 360);
-		panel_lista.setBackground(Color.RED);
+		panel_lista.setBackground(Color.DARK_GRAY);
 		panel_lista.setLayout(null);
-		panel_lista.add(barra_lista);
+		panel_lista.add(barra_lista, JLayeredPane.DRAG_LAYER);
+		panel_lista.add(panel_lista_bg, JLayeredPane.DEFAULT_LAYER);
 		
 		//Imagen Pokemon
 		img_pokemon = new ImagenPokemon();
@@ -141,7 +149,7 @@ public class PanelMostrar extends JPanel {
 		add(indicador_busqueda);
 		add(indicador_nombre);
 		add(campo_filtro);
-		add(boton_seleccionar);
+		add(boton_seleccionar, JLayeredPane.DEFAULT_LAYER);
 		add(bg);
 		setVisible(true);
 

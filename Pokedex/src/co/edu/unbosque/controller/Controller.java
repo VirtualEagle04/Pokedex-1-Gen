@@ -46,6 +46,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 					.addElement(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
 			valores.add(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
 		}
+		
 	}
 
 	public void agregarLectores() {
@@ -168,16 +169,20 @@ public class Controller implements ActionListener, ListSelectionListener {
 	public void valueChanged(ListSelectionEvent e) {
 		for (int i = 0; i < pdao.getLista().size(); i++) {
 
-			if (vp.getPanel_mostrar().getLista_n().getSelectedValue().substring(0, 3).equals(pdao.getLista().get(i).getId())) {
+			try {
+				if (vp.getPanel_mostrar().getLista_n().getSelectedValue().substring(0, 3).equals(pdao.getLista().get(i).getId())) {
 
-				String directorio = "src/Assets/PokemonSprites/" + pdao.getLista().get(i).getNombre() + "_icon.png";
-				vp.getPanel_mostrar().getImg_pokemon().cargarImagen(directorio);
-				vp.getPanel_mostrar().getNombre_pokemon().setText(pdao.getLista().get(i).getNombre());
+					String directorio = "src/Assets/PokemonSprites/" + pdao.getLista().get(i).getNombre() + "_icon.png";
+					vp.getPanel_mostrar().getImg_pokemon().cargarImagen(directorio);
+					vp.getPanel_mostrar().getNombre_pokemon().setText(pdao.getLista().get(i).getNombre());
 
-				break;
-			} else {
-				vp.getPanel_mostrar().getImg_pokemon().cargarImagen("src/Assets/PokemonSprites/000.png");
-				vp.getPanel_mostrar().getNombre_pokemon().setText(pdao.getLista().get(i).getNombre());
+					break;
+				} else {
+					vp.getPanel_mostrar().getImg_pokemon().cargarImagen("src/Assets/PokemonSprites/000.png");
+					vp.getPanel_mostrar().getNombre_pokemon().setText(pdao.getLista().get(i).getNombre());
+				}
+			}catch (NullPointerException e1) {
+				
 			}
 		}
 
@@ -216,8 +221,6 @@ public class Controller implements ActionListener, ListSelectionListener {
 					valores.add(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
 					check = false;
 				}
-			} else {
-				// No hace nada
 			}
 			break;
 		}
@@ -234,6 +237,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 			break;
 		}
 		case "SeleccionInfo": {
+			String sel = "";
 			
 			vp.getPanel_info().setVisible(true);
 			vp.getPanel_agregar().setVisible(false);
@@ -242,7 +246,10 @@ public class Controller implements ActionListener, ListSelectionListener {
 			
 			vp.getPanel_info().getDesc().setVisible(true);
 
-			String sel = vp.getPanel_mostrar().getLista_n().getSelectedValue();
+			try {
+				sel = vp.getPanel_mostrar().getLista_n().getSelectedValue();
+			}catch (NullPointerException e1) {}
+			
 			for (int i = 0; i < pdao.getLista().size(); i++) {
 				if (pdao.getLista().get(i).getId().equals(sel.substring(0, 3))) {
 					vp.getPanel_info().getImg_pokemon().cargarImagen("src/Assets/PokemonInfoSprites/" + sel.substring(0, 3) + ".png");
@@ -271,12 +278,14 @@ public class Controller implements ActionListener, ListSelectionListener {
 					vp.getPanel_info().getImg_pokemon().cargarImagen("src/Assets/PokemonSprites/000.png");
 				}
 			}
+			
 			vp.getPanel_mostrar().setModelo(vp.getPanel_mostrar().getModelo());
 			vp.getPanel_mostrar().getLista_n().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			vp.getPanel_mostrar().getModelo().clear();
 			for (int i = 0; i < valores.size(); i++) {
 				vp.getPanel_mostrar().getModelo().addElement(valores.get(i));
 			}
+			vp.getPanel_mostrar().getCampo_filtro().setText("");
 
 			break;
 		}
@@ -393,6 +402,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 				if(validacion == 11) {
 					pdao.crearTipoIndividual(id + "", nombre, lv, al, pe, tipo1, hp, atk, def, satk, sdef, vel, desc);
 					vp.getPanel_mostrar().getModelo().addElement(id+" "+nombre);
+					valores.add(id+" "+nombre);
 					check = false;
 					vp.getPanel_mostrar().setVisible(true);
 					vp.getPanel_agregar().setVisible(false);
@@ -526,6 +536,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 				if(validacion2 == 11) {
 					pdao.crearTipoSecundario(id + "", nombre, lv, al, pe, tipo1, tipo2, hp, atk, def, satk, sdef, vel, desc);
 					vp.getPanel_mostrar().getModelo().addElement(id+" "+nombre);
+					valores.add(id+" "+nombre);
 					check = false;
 					vp.getPanel_mostrar().setVisible(true);
 					vp.getPanel_agregar().setVisible(false);

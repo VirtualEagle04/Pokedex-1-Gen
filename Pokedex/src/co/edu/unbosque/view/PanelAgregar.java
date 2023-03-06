@@ -31,6 +31,7 @@ public class PanelAgregar extends JPanel {
 	private JComboBox<String> campo_tipo, campo_tipo_sec;
 	private JScrollPane scrollpane_descripcion;
 	private JButton confirmar;
+	private JLabel panel_agregar_bg;
 	private Font fuente;
 
 	public PanelAgregar() {
@@ -296,12 +297,17 @@ public class PanelAgregar extends JPanel {
 		
 		pregunta = new JLabel(imageIcon);
 		pregunta.setBounds(335, 40, 390, 400);
+		
+		panel_agregar_bg = new JLabel(new ImageIcon("src/Assets/GUI/panelAgregar.png"));
+		panel_agregar_bg.setBounds(0,0, 356, 440);
+		
 
 		panel_agregar = new JPanel();
 		panel_agregar.setBounds(5, 6, 356, 440);
-		panel_agregar.setBackground(Color.RED);
+		panel_agregar.setBackground(Color.DARK_GRAY);
 		panel_agregar.setLayout(null);
-		panel_agregar.add(panel_creacion);
+		panel_agregar.add(panel_creacion, JLayeredPane.DRAG_LAYER);
+		panel_agregar.add(panel_agregar_bg, JLayeredPane.DEFAULT_LAYER);
 
 		add(pregunta, JLayeredPane.DRAG_LAYER);
 		add(bg, JLayeredPane.PALETTE_LAYER);

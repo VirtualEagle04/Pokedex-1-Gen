@@ -42,7 +42,7 @@ public class PanelInfo extends JPanel {
 			// Imagen v
 			BufferedImage img = null;
 			try {
-				img = ImageIO.read(new File("src/Assets/GUI/panelInfoBg3.png"));
+				img = ImageIO.read(new File("src/Assets/GUI/panelInfo.png"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

@@ -12,8 +12,8 @@ public class VentanaPrincipal extends JFrame{
 	private PanelInfo panel_info;
 
 	public VentanaPrincipal() {
-		setTitle("Pokedex");
-		ImageIcon img = new ImageIcon("src/Assets/PokemonSprites/Bulbasaur_icon.png");
+		setTitle("POKEDEX");
+		ImageIcon img = new ImageIcon("src/Assets/PokemonInfoSprites/143.png");
 		setIconImage(img.getImage());
 		setSize(720, 540);
 		setLocationRelativeTo(null);
