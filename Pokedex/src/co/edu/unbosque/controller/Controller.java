@@ -15,7 +15,7 @@ import javax.swing.event.ListSelectionListener;
 import co.edu.unbosque.model.PokemonDAO;
 import co.edu.unbosque.view.VentanaPrincipal;
 
-public class Controller implements ActionListener, ListSelectionListener {
+public class Controller implements ActionListener {
 
 	private VentanaPrincipal vp;
 	private PokemonDAO pdao;
@@ -42,14 +42,26 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 		// Inicializando Lista
 		for (int i = 0; i < pdao.getLista().size(); i++) {
-			vp.getPanel_mostrar().getModelo()
-					.addElement(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
+			vp.getPanel_mostrar().getModelo().addElement(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
+			vp.getPanel_eliminar().getModelo_eliminar().addElement(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
 			valores.add(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
 		}
 		
 	}
 
 	public void agregarLectores() {
+		
+		//Filtros Eliminar
+		vp.getPanel_eliminar().getCampo_filtro().getDocument().addDocumentListener(new DocumentListener() {
+			@Override
+			public void insertUpdate(DocumentEvent e) { filtrarMostrarEliminar(); }
+
+			@Override
+			public void removeUpdate(DocumentEvent e) { filtrarMostrarEliminar(); }
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {}
+		});
 		
 		//Filtros Agregar
 		vp.getPanel_agregar().getCampo_id().getDocument().addDocumentListener(new DocumentListener() {
@@ -90,7 +102,56 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 		});
 
-		vp.getPanel_mostrar().getLista_n().addListSelectionListener(this);
+		//Imagen y Nombre Mostrar
+		vp.getPanel_mostrar().getLista_n().addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				for (int i = 0; i < pdao.getLista().size(); i++) {
+
+					try {
+						if (vp.getPanel_mostrar().getLista_n().getSelectedValue().substring(0, 3).equals(pdao.getLista().get(i).getId())) {
+
+							String directorio = "src/Assets/PokemonSprites/" + pdao.getLista().get(i).getNombre() + "_icon.png";
+							vp.getPanel_mostrar().getImg_pokemon().cargarImagen(directorio);
+							vp.getPanel_mostrar().getNombre_pokemon().setText(pdao.getLista().get(i).getNombre());
+
+							break;
+						} else {
+							vp.getPanel_mostrar().getImg_pokemon().cargarImagen("src/Assets/PokemonSprites/000.png");
+							vp.getPanel_mostrar().getNombre_pokemon().setText(pdao.getLista().get(i).getNombre());
+						}
+					}catch (NullPointerException e1) {
+						
+					}
+				}
+
+			}
+		});
+		//Imagen y Nombre Eliminar
+		vp.getPanel_eliminar().getLista_eliminar().addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				for (int i = 0; i < pdao.getLista().size(); i++) {
+
+					try {
+						if (vp.getPanel_eliminar().getLista_eliminar().getSelectedValue().substring(0, 3).equals(pdao.getLista().get(i).getId())) {
+
+							String directorio = "src/Assets/PokemonSprites/" + pdao.getLista().get(i).getNombre() + "_icon.png";
+							vp.getPanel_eliminar().getImg_pokemon().cargarImagen(directorio);
+							vp.getPanel_eliminar().getNombre_pokemon().setText(pdao.getLista().get(i).getNombre());
+
+							break;
+						} else {
+							vp.getPanel_eliminar().getImg_pokemon().cargarImagen("src/Assets/PokemonSprites/000.png");
+							vp.getPanel_eliminar().getNombre_pokemon().setText(pdao.getLista().get(i).getNombre());
+						}
+					}catch (NullPointerException e1) {
+						
+					}
+				}
+
+			}
+		});
 
 		vp.getPanel_crud().getAgregar().addActionListener(this);
 		vp.getPanel_crud().getAgregar().setActionCommand("CrudAgregar");
@@ -106,6 +167,9 @@ public class Controller implements ActionListener, ListSelectionListener {
 
 		vp.getPanel_mostrar().getBoton_seleccionar().addActionListener(this);
 		vp.getPanel_mostrar().getBoton_seleccionar().setActionCommand("SeleccionInfo");
+		
+		vp.getPanel_eliminar().getBoton_seleccionar().addActionListener(this);
+		vp.getPanel_eliminar().getBoton_seleccionar().setActionCommand("SeleccionEliminar");
 
 	}
 	
@@ -163,30 +227,25 @@ public class Controller implements ActionListener, ListSelectionListener {
 		}
 	}
 	
-	
+	//Filtro Eliminar
+	public void filtrarMostrarEliminar() {
+		String textfiltro = vp.getPanel_eliminar().getCampo_filtro().getText();
+		filtrarModeloEliminar((DefaultListModel<String>) vp.getPanel_eliminar().getLista_eliminar().getModel(), textfiltro);
+	}
 
-	@Override
-	public void valueChanged(ListSelectionEvent e) {
-		for (int i = 0; i < pdao.getLista().size(); i++) {
-
-			try {
-				if (vp.getPanel_mostrar().getLista_n().getSelectedValue().substring(0, 3).equals(pdao.getLista().get(i).getId())) {
-
-					String directorio = "src/Assets/PokemonSprites/" + pdao.getLista().get(i).getNombre() + "_icon.png";
-					vp.getPanel_mostrar().getImg_pokemon().cargarImagen(directorio);
-					vp.getPanel_mostrar().getNombre_pokemon().setText(pdao.getLista().get(i).getNombre());
-
-					break;
-				} else {
-					vp.getPanel_mostrar().getImg_pokemon().cargarImagen("src/Assets/PokemonSprites/000.png");
-					vp.getPanel_mostrar().getNombre_pokemon().setText(pdao.getLista().get(i).getNombre());
-				}
-			}catch (NullPointerException e1) {
-				
+	public void filtrarModeloEliminar(DefaultListModel<String> modelo, String filtro) {
+		modelo.clear();
+		for (int i = 0; i < valores.size(); i++) {
+			String s = valores.get(i);
+			if (s.toLowerCase().contains(filtro.toLowerCase())) {
+				modelo.addElement(s);
 			}
 		}
-
 	}
+	
+	
+
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -218,22 +277,24 @@ public class Controller implements ActionListener, ListSelectionListener {
 			if (check) {
 				for (int i = 0; i < pdao.getLista().size(); i++) {
 					vp.getPanel_mostrar().getModelo().addElement(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
+					vp.getPanel_eliminar().getModelo_eliminar().addElement(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
 					valores.add(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
 					check = false;
 				}
 			}
 			break;
 		}
-		case "ElimConfirmar": {
+		case "SeleccionEliminar": {
+			
+			vp.getPanel_eliminar().getLabel_confirmar().setVisible(true);
+			vp.getPanel_eliminar().getLabel_text1().setVisible(true);
+			vp.getPanel_eliminar().getLabel_text2().setVisible(true);
+			vp.getPanel_eliminar().getEliminar_confirmar().setVisible(true);
+			
+			break;
+		}
+		case "": {
 			check = true;
-			break;
-		}
-		case "FiltroNombre": {
-
-			break;
-		}
-		case "FiltroID": {
-
 			break;
 		}
 		case "SeleccionInfo": {
@@ -250,40 +311,42 @@ public class Controller implements ActionListener, ListSelectionListener {
 				sel = vp.getPanel_mostrar().getLista_n().getSelectedValue();
 			}catch (NullPointerException e1) {}
 			
-			for (int i = 0; i < pdao.getLista().size(); i++) {
-				if (pdao.getLista().get(i).getId().equals(sel.substring(0, 3))) {
-					vp.getPanel_info().getImg_pokemon().cargarImagen("src/Assets/PokemonInfoSprites/" + sel.substring(0, 3) + ".png");
-					vp.getPanel_info().getId().setText("No." + pdao.getLista().get(i).getId());
-					vp.getPanel_info().getNombre().setText(pdao.getLista().get(i).getNombre().toUpperCase());
-					vp.getPanel_info().getHp().setText(String.valueOf(pdao.getLista().get(i).getHp()) + "/"+ String.valueOf(pdao.getLista().get(i).getHp()));
-					vp.getPanel_info().getAtk().setText(String.valueOf(pdao.getLista().get(i).getAtaque()));
-					vp.getPanel_info().getDef().setText(String.valueOf(pdao.getLista().get(i).getDefensa()));
-					vp.getPanel_info().getSatk().setText(String.valueOf(pdao.getLista().get(i).getAtk_especial()));
-					vp.getPanel_info().getSdef().setText(String.valueOf(pdao.getLista().get(i).getDef_especial()));
-					vp.getPanel_info().getVel().setText(String.valueOf(pdao.getLista().get(i).getVelocidad()));
-					vp.getPanel_info().getLv().setText(String.valueOf(pdao.getLista().get(i).getLv()));
-					vp.getPanel_info().getTipo1_img().cargarImagen("src/Assets/Tipos/tipo" + pdao.getLista().get(i).getTipo() + ".png");
+			try {
+				for (int i = 0; i < pdao.getLista().size(); i++) {
+					if (pdao.getLista().get(i).getId().equals(sel.substring(0, 3))) {
+						vp.getPanel_info().getImg_pokemon().cargarImagen("src/Assets/PokemonInfoSprites/" + sel.substring(0, 3) + ".png");
+						vp.getPanel_info().getId().setText("No." + pdao.getLista().get(i).getId());
+						vp.getPanel_info().getNombre().setText(pdao.getLista().get(i).getNombre().toUpperCase());
+						vp.getPanel_info().getHp().setText(String.valueOf(pdao.getLista().get(i).getHp()) + "/"+ String.valueOf(pdao.getLista().get(i).getHp()));
+						vp.getPanel_info().getAtk().setText(String.valueOf(pdao.getLista().get(i).getAtaque()));
+						vp.getPanel_info().getDef().setText(String.valueOf(pdao.getLista().get(i).getDefensa()));
+						vp.getPanel_info().getSatk().setText(String.valueOf(pdao.getLista().get(i).getAtk_especial()));
+						vp.getPanel_info().getSdef().setText(String.valueOf(pdao.getLista().get(i).getDef_especial()));
+						vp.getPanel_info().getVel().setText(String.valueOf(pdao.getLista().get(i).getVelocidad()));
+						vp.getPanel_info().getLv().setText(String.valueOf(pdao.getLista().get(i).getLv()));
+						vp.getPanel_info().getTipo1_img().cargarImagen("src/Assets/Tipos/tipo" + pdao.getLista().get(i).getTipo() + ".png");
 
-					if (pdao.getLista().get(i).getTipo_sec() == null) {
-						vp.getPanel_info().getTipo2_img().cargarImagen("src/Assets/Tipos/tipoNada.png");
+						if (pdao.getLista().get(i).getTipo_sec() == null) {
+							vp.getPanel_info().getTipo2_img().cargarImagen("src/Assets/Tipos/tipoNada.png");
+						} else {
+							vp.getPanel_info().getTipo2_img()
+									.cargarImagen("src/Assets/Tipos/tipo" + pdao.getLista().get(i).getTipo_sec() + ".png");
+						}
+						vp.getPanel_info().getPeso().setText(String.valueOf(pdao.getLista().get(i).getPeso()));
+						vp.getPanel_info().getAlt().setText(String.valueOf(pdao.getLista().get(i).getAltura()));
+						vp.getPanel_info().getDesc().setText(pdao.getLista().get(i).getDescripcion());
+						break;
 					} else {
-						vp.getPanel_info().getTipo2_img()
-								.cargarImagen("src/Assets/Tipos/tipo" + pdao.getLista().get(i).getTipo_sec() + ".png");
+						vp.getPanel_info().getImg_pokemon().cargarImagen("src/Assets/PokemonSprites/000.png");
 					}
-					vp.getPanel_info().getPeso().setText(String.valueOf(pdao.getLista().get(i).getPeso()));
-					vp.getPanel_info().getAlt().setText(String.valueOf(pdao.getLista().get(i).getAltura()));
-					vp.getPanel_info().getDesc().setText(pdao.getLista().get(i).getDescripcion());
-					break;
-				} else {
-					vp.getPanel_info().getImg_pokemon().cargarImagen("src/Assets/PokemonSprites/000.png");
 				}
-			}
+			} catch (NullPointerException e1) {}
 			
 			vp.getPanel_mostrar().setModelo(vp.getPanel_mostrar().getModelo());
-			vp.getPanel_mostrar().getLista_n().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			vp.getPanel_mostrar().getModelo().clear();
 			for (int i = 0; i < valores.size(); i++) {
 				vp.getPanel_mostrar().getModelo().addElement(valores.get(i));
+				vp.getPanel_eliminar().getModelo_eliminar().addElement(valores.get(i));
 			}
 			vp.getPanel_mostrar().getCampo_filtro().setText("");
 
@@ -402,6 +465,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 				if(validacion == 11) {
 					pdao.crearTipoIndividual(id + "", nombre, lv, al, pe, tipo1, hp, atk, def, satk, sdef, vel, desc);
 					vp.getPanel_mostrar().getModelo().addElement(id+" "+nombre);
+					vp.getPanel_eliminar().getModelo_eliminar().addElement(id +" "+nombre);
 					valores.add(id+" "+nombre);
 					check = false;
 					vp.getPanel_mostrar().setVisible(true);
@@ -536,6 +600,7 @@ public class Controller implements ActionListener, ListSelectionListener {
 				if(validacion2 == 11) {
 					pdao.crearTipoSecundario(id + "", nombre, lv, al, pe, tipo1, tipo2, hp, atk, def, satk, sdef, vel, desc);
 					vp.getPanel_mostrar().getModelo().addElement(id+" "+nombre);
+					vp.getPanel_eliminar().getModelo_eliminar().addElement(id +" "+nombre);
 					valores.add(id+" "+nombre);
 					check = false;
 					vp.getPanel_mostrar().setVisible(true);

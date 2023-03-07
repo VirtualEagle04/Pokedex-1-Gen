@@ -13,7 +13,7 @@ public class VentanaPrincipal extends JFrame{
 
 	public VentanaPrincipal() {
 		setTitle("POKEDEX");
-		ImageIcon img = new ImageIcon("src/Assets/PokemonInfoSprites/143.png");
+		ImageIcon img = new ImageIcon("src/Assets/PokemonInfoSprites/006.png");
 		setIconImage(img.getImage());
 		setSize(720, 540);
 		setLocationRelativeTo(null);

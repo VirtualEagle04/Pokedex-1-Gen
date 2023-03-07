@@ -29,7 +29,7 @@ public class PanelMostrar extends JPanel {
 	private JTextField campo_filtro;
 	private JLabel indicador_id, indicador_nombre, indicador_busqueda;
 	private JScrollPane barra_lista;
-	private JButton boton_nombre, boton_id, boton_seleccionar;
+	private JButton boton_seleccionar;
 	private JLabel nombre_pokemon, nombre_pokemon_panel;
 	
 	//Imagen Pokemon
@@ -77,20 +77,12 @@ public class PanelMostrar extends JPanel {
 		campo_filtro.setEditable(true);
 		campo_filtro.setBorder(null);
 
-		boton_nombre = new JButton();
-		boton_nombre.setBounds(555, 35, 14, 14);
-		boton_nombre.setBackground(Color.RED);
-
 		indicador_id = new JLabel();
 		indicador_id.setText("ID: ");
 		indicador_id.setBounds(585, 30, 120, 20);
 		indicador_id.setForeground(Color.WHITE);
 		indicador_id.setFont(fuente);
 		indicador_id.setFont(indicador_id.getFont().deriveFont(Font.BOLD, 10));
-
-		boton_id = new JButton();
-		boton_id.setBounds(690, 35, 14, 14);
-		boton_id.setBackground(Color.RED);
 		
 		boton_seleccionar = new JButton();
 		boton_seleccionar.setBounds(440,427,200,20);
@@ -155,6 +147,15 @@ public class PanelMostrar extends JPanel {
 
 	}
 	
+	public JLabel getPanel_lista_bg() {
+		return panel_lista_bg;
+	}
+
+
+	public void setPanel_lista_bg(JLabel panel_lista_bg) {
+		this.panel_lista_bg = panel_lista_bg;
+	}
+
 
 	public JTextField getCampo_filtro() {
 		return campo_filtro;
