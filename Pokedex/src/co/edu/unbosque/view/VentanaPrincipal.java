@@ -12,7 +12,7 @@ public class VentanaPrincipal extends JFrame{
 	private PanelInfo panel_info;
 
 	public VentanaPrincipal() {
-		setTitle("POKEDEX");
+		setTitle("POKÈDEX");
 		ImageIcon img = new ImageIcon("src/Assets/PokemonInfoSprites/006.png");
 		setIconImage(img.getImage());
 		setSize(720, 540);

@@ -32,7 +32,7 @@ public class PanelEliminar extends JPanel {
 	private JButton boton_nombre, boton_id, boton_seleccionar;
 	private JLabel nombre_pokemon, nombre_pokemon_panel;
 	private JLabel label_confirmar, label_text1, label_text2;
-	private JButton eliminar_confirmar;
+	private JButton eliminar_confirmar, eliminar_negar;
 
 	// Imagen Pokemon
 	private ImagenPokemon img_pokemon;
@@ -145,36 +145,47 @@ public class PanelEliminar extends JPanel {
 		nombre_pokemon.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		label_confirmar = new JLabel(new ImageIcon("src/Assets/GUI/nombreMostrar.png"));
-		label_confirmar.setBounds(180,160, 350, 88);
+		label_confirmar.setBounds(10,10, 350, 88);
 		label_confirmar.setVisible(false);
 		
 		label_text1 = new JLabel("Desea eliminar");
-		label_text1.setBounds(180, 140, 350, 88);
+		label_text1.setBounds(10, -15, 350, 88);
 		label_text1.setFont(fuente);
 		label_text1.setFont(label_text1.getFont().deriveFont(Font.BOLD, 15));
 		label_text1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_text1.setVisible(false);
 
 		label_text2 = new JLabel("este Pokemon?");
-		label_text2.setBounds(180, 160, 350, 88);
+		label_text2.setBounds(10, 0, 350, 88);
 		label_text2.setFont(fuente);
 		label_text2.setFont(label_text1.getFont().deriveFont(Font.BOLD, 15));
 		label_text2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_text2.setVisible(false);
 		
 		eliminar_confirmar = new JButton();
-		eliminar_confirmar.setBounds(255, 218, 200, 20);
+		eliminar_confirmar.setBounds(75, 60 , 100, 20);
 		eliminar_confirmar.setBackground(Color.DARK_GRAY);
 		eliminar_confirmar.setForeground(Color.WHITE);
 		eliminar_confirmar.setFont(fuente);
 		eliminar_confirmar.setFont(eliminar_confirmar.getFont().deriveFont(Font.BOLD, 12));
-		eliminar_confirmar.setIcon(new ImageIcon("src/Assets/GUI/botonSeleccionar.png"));
+		eliminar_confirmar.setIcon(new ImageIcon("src/Assets/GUI/eliminarSi.png"));
 		eliminar_confirmar.setBorder(null);
 		eliminar_confirmar.setVisible(false);
+		
+		eliminar_negar = new JButton();
+		eliminar_negar.setBounds(195, 60 , 100, 20);
+		eliminar_negar.setBackground(Color.DARK_GRAY);
+		eliminar_negar.setForeground(Color.WHITE);
+		eliminar_negar.setFont(fuente);
+		eliminar_negar.setFont(eliminar_negar.getFont().deriveFont(Font.BOLD, 12));
+		eliminar_negar.setIcon(new ImageIcon("src/Assets/GUI/eliminarNo.png"));
+		eliminar_negar.setBorder(null);
+		eliminar_negar.setVisible(false);
 		
 		add(label_text1, JLayeredPane.MODAL_LAYER);
 		add(label_text2, JLayeredPane.MODAL_LAYER);
 		add(eliminar_confirmar, JLayeredPane.MODAL_LAYER);
+		add(eliminar_negar, JLayeredPane.MODAL_LAYER);
 		add(label_confirmar, JLayeredPane.DRAG_LAYER);
 		add(nombre_pokemon);
 		add(nombre_pokemon_panel);
@@ -190,6 +201,18 @@ public class PanelEliminar extends JPanel {
 	}
 	
 	
+
+	public JButton getEliminar_negar() {
+		return eliminar_negar;
+	}
+
+
+
+	public void setEliminar_negar(JButton eliminar_negar) {
+		this.eliminar_negar = eliminar_negar;
+	}
+
+
 
 	public JButton getEliminar_confirmar() {
 		return eliminar_confirmar;
