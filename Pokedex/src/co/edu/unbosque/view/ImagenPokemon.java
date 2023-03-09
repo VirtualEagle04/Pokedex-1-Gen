@@ -9,6 +9,12 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+/**
+ * Clase que cuya unica funcion es tener la función cargarImagen()
+ * @author Juan Esteban Quintero, Javier Felipe Meza, Joann Zamudio, Federico Vargas Rozo
+ *
+ */
+
 public class ImagenPokemon extends JLabel{
 
 	private BufferedImage img;
@@ -17,6 +23,13 @@ public class ImagenPokemon extends JLabel{
 	
 	public ImagenPokemon() {
 	}
+	
+	/**
+	 * Dado un String directorio de una imagen .png, utiliza las clases BufferedImage e Image, para  
+	 * transformar una imagen de cierto tamaño predeterminado, y ampliarla a las dimensiones deseadas.
+	 * Esta funcion unicamente es para mostrar las imagenes de cada Pokemon dependiendo del Pokemon seleccionado.
+	 * @param directorio String de la forma <code>"src/Assets/Bulbasaur.png"<code>.
+	 */
 	
 	public void cargarImagen(String directorio) {
 		try {

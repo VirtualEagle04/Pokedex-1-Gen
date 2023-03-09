@@ -226,7 +226,7 @@ public class Controller implements ActionListener {
 	
 	public void filtrarValoresID(String filtro) {
 		for (int i = 0; i < pdao.getLista().size(); i++) {
-			if(pdao.getLista().get(i).getId().equalsIgnoreCase(filtro)) {
+			if(pdao.getLista().get(i).getId().equalsIgnoreCase(filtro) || filtro.equalsIgnoreCase("000")) {
 				vp.getPanel_agregar().getCampo_id().setForeground(Color.RED);
 				id_check = false;
 				break;
@@ -332,6 +332,11 @@ public class Controller implements ActionListener {
 			vp.getPanel_mostrar().getImg_pokemon().setIcon(null);
 			vp.getPanel_mostrar().getNombre_pokemon().setText("");
 			vp.getPanel_mostrar().getLista_n().clearSelection();
+			vp.getPanel_eliminar().getLabel_confirmar().setVisible(false);
+			vp.getPanel_eliminar().getLabel_text1().setVisible(false);
+			vp.getPanel_eliminar().getLabel_text2().setVisible(false);
+			vp.getPanel_eliminar().getEliminar_confirmar().setVisible(false);
+			vp.getPanel_eliminar().getEliminar_negar().setVisible(false);
 			
 			
 			vp.getPanel_agregar().setVisible(true);
@@ -367,6 +372,11 @@ public class Controller implements ActionListener {
 			vp.getPanel_eliminar().getImg_pokemon().setIcon(null);
 			vp.getPanel_eliminar().getNombre_pokemon().setText("");
 			vp.getPanel_eliminar().getLista_eliminar().clearSelection();
+			vp.getPanel_eliminar().getLabel_confirmar().setVisible(false);
+			vp.getPanel_eliminar().getLabel_text1().setVisible(false);
+			vp.getPanel_eliminar().getLabel_text2().setVisible(false);
+			vp.getPanel_eliminar().getEliminar_confirmar().setVisible(false);
+			vp.getPanel_eliminar().getEliminar_negar().setVisible(false);
 			
 			vp.getPanel_agregar().setVisible(false);
 			vp.getPanel_mostrar().setVisible(true);
@@ -507,19 +517,23 @@ public class Controller implements ActionListener {
 		}
 		case "AgregConfirmar": {
 			int validacion = 0;
+			boolean letras = false;
 
 			if (vp.getPanel_agregar().getCampo_tipo_sec().getSelectedItem().equals("Sin 2' Tipo")) {
 
-				if(id_check) {
-					try {
-						vp.getPanel_agregar().getCampo_id().setForeground(Color.BLACK);
-						int temp = Integer.parseInt(vp.getPanel_agregar().getCampo_id().getText());
-						id = temp+"";
-						
-						validacion++;
-					}catch (NumberFormatException e1) {
-						vp.getPanel_agregar().getCampo_id().setForeground(Color.RED);
+				int len = vp.getPanel_agregar().getCampo_id().getText().length();
+				for(int i = 0; i < len; i++) {
+					if(Character.isLetter(vp.getPanel_agregar().getCampo_id().getText().charAt(i))) {
+						letras = true;
+						break;
 					}
+				}
+				if(letras) {
+					vp.getPanel_agregar().getCampo_id().setForeground(Color.RED);
+				}else {
+					vp.getPanel_agregar().getCampo_id().setForeground(Color.BLACK);
+					id = vp.getPanel_agregar().getCampo_id().getText();
+					validacion++;
 				}
 				
 				if(nombre_check) {
@@ -656,17 +670,21 @@ public class Controller implements ActionListener {
 
 			} else {
 				int validacion2 = 0;
+				boolean letras2 = false;
 				
-				if(id_check) {
-					try {
-						vp.getPanel_agregar().getCampo_id().setForeground(Color.BLACK);
-						int temp = Integer.parseInt(vp.getPanel_agregar().getCampo_id().getText());
-						id = temp+"";
-						
-						validacion2++;
-					}catch (NumberFormatException e1) {
-						vp.getPanel_agregar().getCampo_id().setForeground(Color.RED);
+				int len = vp.getPanel_agregar().getCampo_id().getText().length();
+				for(int i = 0; i < len; i++) {
+					if(Character.isLetter(vp.getPanel_agregar().getCampo_id().getText().charAt(i))) {
+						letras2 = true;
+						break;
 					}
+				}
+				if(letras2) {
+					vp.getPanel_agregar().getCampo_id().setForeground(Color.RED);
+				}else {
+					vp.getPanel_agregar().getCampo_id().setForeground(Color.BLACK);
+					id = vp.getPanel_agregar().getCampo_id().getText();
+					validacion2++;
 				}
 				
 				if(nombre_check) {

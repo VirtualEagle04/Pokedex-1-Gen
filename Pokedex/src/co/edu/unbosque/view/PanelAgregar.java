@@ -22,7 +22,44 @@ import javax.swing.JTextField;
 /**
  * Clase que hereda de JPanel y muestra la funcionalidad de crear nuevos Pokemones.
  * @author Juan Esteban Quintero, Javier Felipe Meza, Joann Zamudio, Federico Vargas Rozo
- * @param panel_agregar 
+ * @param panel_agregar Panel en donde se encuentra el panel_creacion.
+ * @param panel_creacion Panel en donde se encuentran los campos para ingresar la información del Pokemon a crear.
+ * @param ind_id Indicador del campo ID del Pokemon.
+ * @param ind_nombre Indicador del campo Nombre del Pokemon.
+ * @param ind_lv Indicador del campo Nivel del Pokemon.
+ * @param ind_al Indicador del campo Altura del Pokemon.
+ * @param ind_pe Indicador del campo Peso del Pokemon.
+ * @param ind_hp Indicador del campo Puntos de Salud del Pokemon.
+ * @param ind_atk Indicador del campo Ataque del Pokemon.
+ * @param ind_def Indicador del campo Defensa del Pokemon.
+ * @param ind_satk Indicador del campo Ataque Especial del Pokemon.
+ * @param ind_sdef Indicador del campo Defensa Especial del Pokemon.
+ * @param ind_vel Indicador del campo Velocidad del Pokemon.
+ * @param ind_tipo Indicador del campo Tipo Primario del Pokemon.
+ * @param ind_tipo_sec Indicador del campo Tipo Secundario del Pokemon.
+ * @param ind_descripcion Indicador del campo Descripcion del Pokemon.
+ * @param unidades_m Indicador de Unidades de la altura.
+ * @param unidades_kg Indicador de Unidades del peso.
+ * @param campo_id Campo para ingresar el ID del Pokemon a crear.
+ * @param campo_nombre Campo para ingresar el Nombre del Pokemon a crear.
+ * @param campo_lv Campo para ingresar el Nivel del Pokemon a crear.
+ * @param campo_al Campo para ingresar la Altura del Pokemon a crear.
+ * @param campo_pe Campo para ingresar el Peso del Pokemon a crear.
+ * @param campo_hp Campo para ingresar los Puntos de Salud del Pokemon a crear.
+ * @param campo_atk Campo para ingresar los Puntos de Ataque del Pokemon a crear.
+ * @param campo_def Campo para ingresar los Puntos de Defensa del Pokemon a crear.
+ * @param campo_satk Campo para ingresar los Puntos de Ataque Especial del Pokemon a crear.
+ * @param campo_sdef Campo para ingresar los Puntos de Defensa Especial del Pokemon a crear.
+ * @param campo_vel Campo para inresar la Velocidad del Pokemon a crear.
+ * @param bg Archivo .gif del fondo animado.
+ * @param pregunta Lamina que muestra una imagen de Pregunta.
+ * @param campo_descripcion Campo para ingresar la Descripcion del Pokemon a crear.
+ * @param campo_tipo JComboBox para seleccionar el Tipo Primario del Pokemon a crear.
+ * @param campo_tipo_sec JComboBox para seleccionar el Tipo Secundario del Pokemon a crear.
+ * @param scrollpane_descripcion JScrollPane que permite escribir una descripcion aunque no quepa en el panel agregar.
+ * @param confirmar Boton para guardar los valores de cada campo y crear un Pokemon.
+ * @param panel_agregar_bg Lamina que muestra una imagen de fondo.
+ * @param fuente Fuente encapsulada dentro del proyecto para evitar la necesidad de instalar la fuente personalizada en cada dispositivo. 
  */
 
 public class PanelAgregar extends JPanel {
