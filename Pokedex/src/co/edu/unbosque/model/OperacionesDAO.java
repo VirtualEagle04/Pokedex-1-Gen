@@ -28,10 +28,11 @@ public abstract class OperacionesDAO {
 	 * @param peso Peso (en Kilogramos) del Pokemon a crear.
 	 * @param tipo Tipo primario del Pokemon a crear.
 	 * @param descripcion Descripcion del Pokemon a crear.
+	 * @param creado_usuario Utilizado para saber si el usuario lo ha creado.
 	 */
 	
 	public abstract void crearTipoIndividual(String id, String nombre, int lv, float altura, float peso, String tipo, int hp,
-			int ataque, int defensa, int atl_especial, int def_especial, int velocidad, String descripcion);
+			int ataque, int defensa, int atl_especial, int def_especial, int velocidad, String descripcion, boolean creado_usuario);
 	
 	/**
 	 * Se llama unicamente cuando el Pokemon a crear contiene un Tipo secundario.
@@ -50,10 +51,11 @@ public abstract class OperacionesDAO {
 	 * @param tipo Tipo primario del Pokemon a crear.
 	 * @param tipo_sec Tipo secundario del Pokemon a crear.
 	 * @param descripcion Descripcion del Pokemon a crear.
+	 * @param creado_usuario Utilizado para saber si el usuario lo ha creado.
 	 */
 	
 	public abstract void crearTipoSecundario(String id, String nombre, int lv, float altura, float peso, String tipo, String tipo_sec,
-			int hp, int ataque, int defensa, int atk_especial, int def_especial, int velocidad, String descripcion);
+			int hp, int ataque, int defensa, int atk_especial, int def_especial, int velocidad, String descripcion, boolean creado_usuario);
 	
 	/**
 	 * Se llama unicamente cuando se desea eliminar un Pokemon por medio de su indice en la lista.

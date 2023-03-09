@@ -67,13 +67,8 @@ public class Controller implements ActionListener {
 		check = false;
 
 		// Inicializando Lista
-		vp.getPanel_mostrar().getModelo().clear();
-		vp.getPanel_eliminar().getModelo_eliminar().clear();
-		for (int i = 0; i < pdao.getLista().size(); i++) {
-			vp.getPanel_mostrar().getModelo().addElement(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
-			vp.getPanel_eliminar().getModelo_eliminar().addElement(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
-			valores.add(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
-		}	
+		cargarModelos();
+		cargarValores();
 	}
 
 	/**
@@ -210,6 +205,43 @@ public class Controller implements ActionListener {
 
 	}
 	/**
+	 * Itera por todos los valores de la lista perteneciente a PokemonesDAO e
+	 * ingresa el ID y el Nombre, concatonados, a el ArrayList Valores.
+	 */
+	
+	public void cargarValores() {
+		for (int i = 0; i < pdao.getLista().size(); i++) {
+			valores.add(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
+		}	
+	}
+	
+	/**
+	 * Itera por todos los valores de la lista perteneciente a PokemonesDAO e
+	 * ingresa el ID y el Nombre, concatonados, a los DefaultListModel de las 
+	 * JList pertenecientes a PanelMostrar y PanelEliminar.
+	 * 
+	 */
+	
+	public void cargarModelos() {
+		//CRUD Mostrar
+		DefaultListModel<String> temp_modelo_mostrar = vp.getPanel_mostrar().getModelo();
+		temp_modelo_mostrar.clear();
+		for(int i = 0; i < pdao.getLista().size(); i++) {
+			temp_modelo_mostrar.addElement(pdao.getLista().get(i).getId()+" "+pdao.getLista().get(i).getNombre());
+		}
+		vp.getPanel_mostrar().getLista_n().setModel(temp_modelo_mostrar);
+		
+		//CRUD Eliminar
+		DefaultListModel<String> temp_modelo_eliminar = vp.getPanel_eliminar().getModelo_eliminar();
+		temp_modelo_eliminar.clear();
+		for (int i = 0; i < pdao.getLista().size(); i++) {
+			temp_modelo_eliminar.addElement(pdao.getLista().get(i).getId()+" "+pdao.getLista().get(i).getNombre());
+		}
+		vp.getPanel_eliminar().getLista_eliminar().setModel(temp_modelo_eliminar);
+	}
+	
+	
+	/**
 	 * Recibe en tiempo real el String de cierto JTextField y lo almacena.
 	 */
 	
@@ -337,6 +369,8 @@ public class Controller implements ActionListener {
 			vp.getPanel_eliminar().getLabel_text2().setVisible(false);
 			vp.getPanel_eliminar().getEliminar_confirmar().setVisible(false);
 			vp.getPanel_eliminar().getEliminar_negar().setVisible(false);
+			vp.getPanel_eliminar().getCampo_filtro().setText("");
+			vp.getPanel_mostrar().getCampo_filtro().setText("");
 			
 			
 			vp.getPanel_agregar().setVisible(true);
@@ -352,6 +386,7 @@ public class Controller implements ActionListener {
 			vp.getPanel_mostrar().getImg_pokemon().setIcon(null);
 			vp.getPanel_mostrar().getNombre_pokemon().setText("");
 			vp.getPanel_mostrar().getLista_n().clearSelection();
+			vp.getPanel_mostrar().getCampo_filtro().setText("");
 			
 			vp.getPanel_agregar().setVisible(false);
 			vp.getPanel_mostrar().setVisible(false);
@@ -359,9 +394,10 @@ public class Controller implements ActionListener {
 
 			if (check) {
 				for (int i = 0; i < pdao.getLista().size(); i++) {
-					vp.getPanel_mostrar().getModelo().addElement(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
-					vp.getPanel_eliminar().getModelo_eliminar().addElement(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
-					valores.add(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
+						vp.getPanel_mostrar().getModelo().addElement(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
+						vp.getPanel_eliminar().getModelo_eliminar().addElement(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
+						valores.add(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
+					
 					check = false;
 				}
 			}
@@ -377,6 +413,7 @@ public class Controller implements ActionListener {
 			vp.getPanel_eliminar().getLabel_text2().setVisible(false);
 			vp.getPanel_eliminar().getEliminar_confirmar().setVisible(false);
 			vp.getPanel_eliminar().getEliminar_negar().setVisible(false);
+			vp.getPanel_eliminar().getCampo_filtro().setText("");
 			
 			vp.getPanel_agregar().setVisible(false);
 			vp.getPanel_mostrar().setVisible(true);
@@ -388,9 +425,10 @@ public class Controller implements ActionListener {
 				vp.getPanel_mostrar().getModelo().clear();
 				vp.getPanel_eliminar().getModelo_eliminar().clear();
 				for (int i = 0; i < pdao.getLista().size(); i++) {
-					vp.getPanel_mostrar().getModelo().addElement(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
-					vp.getPanel_eliminar().getModelo_eliminar().addElement(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
-					valores.add(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
+						vp.getPanel_mostrar().getModelo().addElement(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
+						vp.getPanel_eliminar().getModelo_eliminar().addElement(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
+						valores.add(pdao.getLista().get(i).getId() + " " + pdao.getLista().get(i).getNombre());
+					
 					check = false;
 				}
 			}
@@ -410,10 +448,12 @@ public class Controller implements ActionListener {
 		case "EliminarConfirmar": {
 			
 			try {
+				
 				String temp_del_id = vp.getPanel_eliminar().getLista_eliminar().getSelectedValue().substring(0, 3);
+				
 				for (int i = 0; i < pdao.getLista().size(); i++) {
 					if(pdao.getLista().get(i).getId().equalsIgnoreCase(temp_del_id)) {
-						pdao.getLista().remove(i);
+						pdao.eliminarIndex(i);
 						valores.remove(i);
 					}
 				}
@@ -433,9 +473,11 @@ public class Controller implements ActionListener {
 				vp.getPanel_eliminar().getLabel_text2().setVisible(false);
 				vp.getPanel_eliminar().getEliminar_confirmar().setVisible(false);
 				vp.getPanel_eliminar().getEliminar_negar().setVisible(false);
+				vp.getPanel_eliminar().getCampo_filtro().setText("");
 				
 				check = true;
 			}catch (NullPointerException e1) {}
+			
 			
 			break;
 		}
@@ -474,7 +516,11 @@ public class Controller implements ActionListener {
 				try {
 					for (int i = 0; i < pdao.getLista().size(); i++) {
 						if (pdao.getLista().get(i).getId().equals(sel.substring(0, 3))) {
-							vp.getPanel_info().getImg_pokemon().cargarImagen("src/Assets/PokemonInfoSprites/" + sel.substring(0, 3) + ".png");
+							if(pdao.getLista().get(i).isCreado_usuario()) {
+								vp.getPanel_info().getImg_pokemon().cargarImagen("src/Assets/PokemonSprites/000.png");
+							}else {
+								vp.getPanel_info().getImg_pokemon().cargarImagen("src/Assets/PokemonInfoSprites/" + sel.substring(0, 3) + ".png");
+							}
 							vp.getPanel_info().getId().setText("No." + pdao.getLista().get(i).getId());
 							vp.getPanel_info().getNombre().setText(pdao.getLista().get(i).getNombre().toUpperCase());
 							vp.getPanel_info().getHp().setText(String.valueOf(pdao.getLista().get(i).getHp()) + "/"+ String.valueOf(pdao.getLista().get(i).getHp()));
@@ -495,9 +541,10 @@ public class Controller implements ActionListener {
 							vp.getPanel_info().getAlt().setText(String.valueOf(pdao.getLista().get(i).getAltura()));
 							vp.getPanel_info().getDesc().setText(pdao.getLista().get(i).getDescripcion());
 							break;
-						} else {
-							vp.getPanel_info().getImg_pokemon().cargarImagen("src/Assets/PokemonSprites/000.png");
-						}
+						} 
+//						else {
+//							vp.getPanel_info().getImg_pokemon().cargarImagen("src/Assets/PokemonSprites/000.png");
+//						}
 					}
 				} catch (NullPointerException e1) {}
 			}
@@ -643,10 +690,26 @@ public class Controller implements ActionListener {
 				}
 				
 				if(validacion == 12) {
-					pdao.crearTipoIndividual(id + "", nombre, lv, al, pe, tipo1, hp, atk, def, satk, sdef, vel, desc);
-					vp.getPanel_mostrar().getModelo().addElement(id+" "+nombre);
-					vp.getPanel_eliminar().getModelo_eliminar().addElement(id +" "+nombre);
-					valores.add(id+" "+nombre);
+					pdao.crearTipoIndividual(id + "", nombre, lv, al, pe, tipo1, hp, atk, def, satk, sdef, vel, desc, true);
+					if(Integer.parseInt(id)-1 >= vp.getPanel_mostrar().getModelo().size()) {
+						vp.getPanel_mostrar().getModelo().add(vp.getPanel_mostrar().getModelo().size(), id+" "+nombre);
+					}else {
+						vp.getPanel_mostrar().getModelo().add(Integer.parseInt(id)-1, id+" "+nombre);
+					}
+					
+					if(Integer.parseInt(id)-1 >= vp.getPanel_eliminar().getModelo_eliminar().size()) {
+						vp.getPanel_eliminar().getModelo_eliminar().add(vp.getPanel_eliminar().getModelo_eliminar().size(), id+" "+nombre);
+					}else {
+						vp.getPanel_eliminar().getModelo_eliminar().add(Integer.parseInt(id)-1, id+" "+nombre);
+					}
+					if(Integer.parseInt(id)-1 >= valores.size()) {
+						valores.add(valores.size(), id+" "+nombre);
+					}else {
+						valores.add(Integer.parseInt(id)-1, id+" "+nombre);
+					}
+					
+					
+					
 					check = false;
 					vp.getPanel_mostrar().setVisible(true);
 					vp.getPanel_agregar().setVisible(false);
@@ -664,6 +727,8 @@ public class Controller implements ActionListener {
 					vp.getPanel_agregar().getCampo_descripcion().setText("");
 					vp.getPanel_agregar().getCampo_tipo().setSelectedIndex(0);
 					vp.getPanel_agregar().getCampo_tipo_sec().setSelectedIndex(0);
+					vp.getPanel_agregar().getCampo_tipo().setForeground(Color.DARK_GRAY);
+					vp.getPanel_agregar().getCampo_tipo_sec().setForeground(Color.DARK_GRAY);
 					
 				}
 				break;
@@ -805,10 +870,23 @@ public class Controller implements ActionListener {
 				}
 				
 				if(validacion2 == 13) {
-					pdao.crearTipoSecundario(id + "", nombre, lv, al, pe, tipo1, tipo2, hp, atk, def, satk, sdef, vel, desc);
-					vp.getPanel_mostrar().getModelo().addElement(id+" "+nombre);
-					vp.getPanel_eliminar().getModelo_eliminar().addElement(id +" "+nombre);
-					valores.add(id+" "+nombre);
+					pdao.crearTipoSecundario(id + "", nombre, lv, al, pe, tipo1, tipo2, hp, atk, def, satk, sdef, vel, desc, true);
+					if(Integer.parseInt(id)-1 >= vp.getPanel_mostrar().getModelo().size()) {
+						vp.getPanel_mostrar().getModelo().add(vp.getPanel_mostrar().getModelo().size(), id+" "+nombre);
+					}else {
+						vp.getPanel_mostrar().getModelo().add(Integer.parseInt(id)-1, id+" "+nombre);
+					}
+					
+					if(Integer.parseInt(id)-1 >= vp.getPanel_eliminar().getModelo_eliminar().size()) {
+						vp.getPanel_eliminar().getModelo_eliminar().add(vp.getPanel_eliminar().getModelo_eliminar().size(), id+" "+nombre);
+					}else {
+						vp.getPanel_eliminar().getModelo_eliminar().add(Integer.parseInt(id)-1, id+" "+nombre);
+					}
+					if(Integer.parseInt(id)-1 >= valores.size()) {
+						valores.add(valores.size(), id+" "+nombre);
+					}else {
+						valores.add(Integer.parseInt(id)-1, id+" "+nombre);
+					}
 					check = false;
 					vp.getPanel_mostrar().setVisible(true);
 					vp.getPanel_agregar().setVisible(false);
@@ -826,6 +904,8 @@ public class Controller implements ActionListener {
 					vp.getPanel_agregar().getCampo_descripcion().setText("");
 					vp.getPanel_agregar().getCampo_tipo().setSelectedIndex(0);
 					vp.getPanel_agregar().getCampo_tipo_sec().setSelectedIndex(0);
+					vp.getPanel_agregar().getCampo_tipo().setForeground(Color.DARK_GRAY);
+					vp.getPanel_agregar().getCampo_tipo_sec().setForeground(Color.DARK_GRAY);
 				}
 
 				

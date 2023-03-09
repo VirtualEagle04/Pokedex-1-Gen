@@ -17,6 +17,7 @@ package co.edu.unbosque.model;
  * @param tipo Tipo primario del Pokemon a crear.
  * @param tipo_sec Tipo secundario del Pokemon a crear.
  * @param descripcion Descripcion del Pokemon a crear.
+ * @param creado_usuario Utilizado para saber si el usuario lo ha creado.
  */
 
 public class PokemonDTO {
@@ -37,6 +38,7 @@ public class PokemonDTO {
 	private int velocidad;
 
 	private String descripcion;
+	private boolean creado_usuario;
 	
 	public PokemonDTO() {
 		
@@ -57,11 +59,12 @@ public class PokemonDTO {
 	 * @param tipo Tipo primario del Pokemon a crear.
 	 * @param tipo_sec Tipo secundario del Pokemon a crear.
 	 * @param descripcion Descripcion del Pokemon a crear.
+	 * @param creado_usuario Utilizado para saber si el usuario lo ha creado.
 	 */
 	
 	//Con Tipo Secundario
 	public PokemonDTO(String id, String nombre, int lv, float altura, float peso, String tipo, String tipo_sec, int hp, int ataque,
-			int defensa, int atk_especial, int def_especial, int velocidad, String descripcion) {
+			int defensa, int atk_especial, int def_especial, int velocidad, String descripcion, boolean creado_usuario) {
 		this.id = id;
 		this.nombre = nombre;
 		this.lv = lv;
@@ -76,6 +79,7 @@ public class PokemonDTO {
 		this.def_especial = def_especial;
 		this.velocidad = velocidad;
 		this.descripcion = descripcion;
+		this.creado_usuario = creado_usuario;
 	}
 	
 	/**
@@ -93,11 +97,12 @@ public class PokemonDTO {
 	 * @param peso Peso (en Kilogramos) del Pokemon a crear.
 	 * @param tipo Tipo primario del Pokemon a crear.
 	 * @param descripcion Descripcion del Pokemon a crear.
+	 * @param creado_usuario Utilizado para saber si el usuario lo ha creado.
 	 */
 	
 	//Sin Tipo Secundario
 	public PokemonDTO(String id, String nombre, int lv, float altura, float peso, String tipo, int hp, int ataque, int defensa,
-			int atk_especial, int def_especial, int velocidad, String descripcion) {
+			int atk_especial, int def_especial, int velocidad, String descripcion, boolean creado_usuario) {
 		this.id = id;
 		this.nombre = nombre;
 		this.lv = lv;
@@ -111,6 +116,15 @@ public class PokemonDTO {
 		this.def_especial = def_especial;
 		this.velocidad = velocidad;
 		this.descripcion = descripcion;
+		this.creado_usuario = creado_usuario;
+	}
+	
+	
+	public boolean isCreado_usuario() {
+		return creado_usuario;
+	}
+	public void setCreado_usuario(boolean creado_usuario) {
+		this.creado_usuario = creado_usuario;
 	}
 	public String getId() {
 		return id;

@@ -121,7 +121,6 @@ public class PanelMostrar extends JPanel {
 		lista_n.setFont(fuente);
 		lista_n.setFont(lista_n.getFont().deriveFont(Font.BOLD,15));
 		modelo = new DefaultListModel<>();
-		lista_n.setModel(modelo);
 		lista_n.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		barra_lista = new JScrollPane(lista_n);
