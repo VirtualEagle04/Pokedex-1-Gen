@@ -14,7 +14,7 @@ public class PokemonDAO extends OperacionesDAO {
 
 	public PokemonDAO() {
 		lista = new ArrayList<PokemonDTO>();
-		lista.add(new PokemonDTO("000", "???", 0, 0f, 0f, "???", "???", 0, 0, 0, 0, 0, 0, "???"));
+		
 		lista.add(new PokemonDTO("001", "Bulbasaur", 1, 0.7f, 6.9f, "Planta", "Veneno", 45, 49, 49, 65, 65, 45, "Una rara semilla fue plantada en su espalda al nacer. La planta brota y crece con este Pokemon."));
 		lista.add(new PokemonDTO("002", "Ivysaur", 16, 1f, 13f, "Planta", "Veneno", 60, 62, 63, 80, 80, 60, "Cuando el bulbo de su espalda crece, parece no poder ponerse de pie sobre sus patas traseras."));
 		lista.add(new PokemonDTO("003", "Venusaur", 32, 2f, 100f, "Planta", "Veneno", 80, 82, 83, 100, 100, 80, "La planta florese cuando absorbe energia solar. Esta le obliga a ponerse en busca de la luz."));
