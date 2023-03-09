@@ -19,6 +19,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+/**
+ * Clase que hereda de JPanel y muestra la funcionalidad de crear nuevos Pokemones.
+ * @author Juan Esteban Quintero, Javier Felipe Meza, Joann Zamudio, Federico Vargas Rozo
+ * @param panel_agregar 
+ */
+
 public class PanelAgregar extends JPanel {
 
 	private JPanel panel_agregar, panel_creacion;

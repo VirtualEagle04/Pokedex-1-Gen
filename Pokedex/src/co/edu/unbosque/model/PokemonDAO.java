@@ -1,6 +1,12 @@
-package co.edu.unbosque.model;
+ package co.edu.unbosque.model;
 
 import java.util.ArrayList;
+
+/**
+ * Al heredar de la clase abstracta OperacionesDAO, obliga a darle funcionalidad a los metodos por medio de la palabra clave Override.
+ * @author Juan Esteban Quintero, Javier Felipe Meza, Joann Zamudio, Federico Vargas Rozo
+ * @param lista ArrayList de tipo PokemonDTO que contiene la informacion general de todos los Pokemones de la primera generacion.
+ */
 
 public class PokemonDAO extends OperacionesDAO {
 
@@ -8,7 +14,7 @@ public class PokemonDAO extends OperacionesDAO {
 
 	public PokemonDAO() {
 		lista = new ArrayList<PokemonDTO>();
-    
+		lista.add(new PokemonDTO("000", "???", 0, 0f, 0f, "???", "???", 0, 0, 0, 0, 0, 0, "???"));
 		lista.add(new PokemonDTO("001", "Bulbasaur", 1, 0.7f, 6.9f, "Planta", "Veneno", 45, 49, 49, 65, 65, 45, "Una rara semilla fue plantada en su espalda al nacer. La planta brota y crece con este Pokemon."));
 		lista.add(new PokemonDTO("002", "Ivysaur", 16, 1f, 13f, "Planta", "Veneno", 60, 62, 63, 80, 80, 60, "Cuando el bulbo de su espalda crece, parece no poder ponerse de pie sobre sus patas traseras."));
 		lista.add(new PokemonDTO("003", "Venusaur", 32, 2f, 100f, "Planta", "Veneno", 80, 82, 83, 100, 100, 80, "La planta florese cuando absorbe energia solar. Esta le obliga a ponerse en busca de la luz."));
@@ -176,7 +182,7 @@ public class PokemonDAO extends OperacionesDAO {
 	}
 
 	// Funciones CRUD
-
+	
 	@Override
 	public void crearTipoIndividual(String id, String nombre, int lv, float altura, float peso, String tipo, int hp,
 			int ataque, int defensa, int atl_especial, int def_especial, int velocidad, String descripcion) {

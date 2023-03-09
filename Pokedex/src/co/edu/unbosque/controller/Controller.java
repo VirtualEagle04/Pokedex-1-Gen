@@ -14,6 +14,30 @@ import javax.swing.event.ListSelectionListener;
 import co.edu.unbosque.model.PokemonDAO;
 import co.edu.unbosque.view.VentanaPrincipal;
 
+/**
+ * Establece la lógica entre la interfaz de usuario y las representaciones planteadas en el modelo.
+ * 
+ * @author Juan Esteban Quintero, Javier Felipe Meza, Joann Zamudio, Federico Vargas Rozo
+ * @param vp Objeto de la clase VentanaPrincipal.
+ * @param pdao Objeto de la clase PokemonDAO.
+ * @param check Variable para verificar si se ha creado, eliminado, o modificado un Pokemon de la lista PokemonDAO.
+ * @param id_check Variable para verificar si el ID del Pokemon a crear previamente existe.
+ * @param nombre_check Variable para verificar si el Nombre del Pokemon a crear previamente existe.
+ * @param valores ArrayList para acceder facilmente a todos los Pokemones desde los filtros.
+ * @param id ID del Pokemon a crear.
+ * @param nombre Nombre del Pokemon a crear.
+ * @param lv Nivel (Level) del Pokemon a crear.
+ * @param hp Puntos de Salud (Health Points) del Pokemon a crear.
+ * @param atk Ataque del Pokemon a crear.
+ * @param def Defensa del Pokemon a crear.
+ * @param satk Ataque Especial del Pokemon a crear.
+ * @param sdef Defensa Especial del Pokemon a crear.
+ * @param vel Velocidad del Pokemon a crear.
+ * @param al Altura (en metros) del Pokemon a crear.
+ * @param pe Peso (en Kilogramos) del Pokemon a crear.
+ * 
+ */
+
 public class Controller implements ActionListener {
 
 	private VentanaPrincipal vp;
@@ -31,6 +55,9 @@ public class Controller implements ActionListener {
 	public Controller() {
 
 	}
+	/**
+	 * Funcion para inicializar atributos, lectores, variables y añadir todos los Pokemones a las respectivas listas.
+	 */
 
 	public void run() {
 		vp = new VentanaPrincipal();
@@ -49,6 +76,10 @@ public class Controller implements ActionListener {
 		}	
 	}
 
+	/**
+	 * Se crean los lectores para que todo JButton, JTextField y JList, permitan la lectura.
+	 */
+	
 	public void agregarLectores() {
 		
 		//Filtros Eliminar
@@ -178,12 +209,20 @@ public class Controller implements ActionListener {
 		vp.getPanel_eliminar().getEliminar_negar().setActionCommand("EliminarNegar");
 
 	}
+	/**
+	 * Recibe en tiempo real el String de cierto JTextField y lo almacena.
+	 */
 	
 	//Filtros ID
 	public void filtrarID() {
 		String textfiltro = vp.getPanel_agregar().getCampo_id().getText();
 		filtrarValoresID(textfiltro);
 	}
+	/**
+	 * Itera por todos los valores de la lista, hasta encontrar todos los que contengan el filtro.
+	 * Revisa si el ID ingresado, le pertenece a otro Pokemon.
+	 * @param filtro String anteriormente almacenado.
+	 */
 	
 	public void filtrarValoresID(String filtro) {
 		for (int i = 0; i < pdao.getLista().size(); i++) {
@@ -198,11 +237,21 @@ public class Controller implements ActionListener {
 		}
 	}
 	
+	/**
+	 * Recibe en tiempo real el String de cierto JTextField y lo almacena.
+	 */
+	
 	//Filtos Nombre
 	public void filtrarNombre() {
 		String textfiltro = vp.getPanel_agregar().getCampo_nombre().getText();
 		filtrarValoresNombre(textfiltro);
 	}
+	
+	/**
+	 * Itera por todos los valores de la lista, hasta encontrar todos los que contengan el filtro.
+	 * Revisa si el Nombre ingresado, le pertenece a otro Pokemon.
+	 * @param filtro String anteriormente almacenado.
+	 */
 	
 	public void filtrarValoresNombre(String filtro) {
 		for (int i = 0; i < pdao.getLista().size(); i++) {
@@ -216,12 +265,22 @@ public class Controller implements ActionListener {
 			}
 		}
 	}
+	
+	/**
+	 * Recibe en tiempo real el String de cierto JTextField y lo almacena.
+	 */
 		
 	//Filtros Lista
 	public void filtrarMostrar() {
 		String textfiltro = vp.getPanel_mostrar().getCampo_filtro().getText();
 		filtrarModelo((DefaultListModel<String>) vp.getPanel_mostrar().getLista_n().getModel(), textfiltro);
 	}
+	
+	/**
+	 * Itera por todos los valores de la JList hasta encontrar aquellos que contengan el filtro.
+	 * @param modelo DefaultListModel del JList en el Panel de Mostrar.
+	 * @param filtro String anteriormente almancenado.
+	 */
 
 	public void filtrarModelo(DefaultListModel<String> modelo, String filtro) {
 		modelo.clear();
@@ -233,12 +292,22 @@ public class Controller implements ActionListener {
 		}
 	}
 	
+	/**
+	 * Recibe en tiempo real el String de cierto JTextField y lo almacena.
+	 */
+	
 	//Filtro Eliminar
 	public void filtrarMostrarEliminar() {
 		String textfiltro = vp.getPanel_eliminar().getCampo_filtro().getText();
 		filtrarModeloEliminar((DefaultListModel<String>) vp.getPanel_eliminar().getLista_eliminar().getModel(), textfiltro);
 	}
 
+	/**
+	 * Itera por todos los valores de la JList hasta encontrar aquellos que contengan el filtro.
+	 * @param modelo DefaultListModel del JList en el Panel de Eliminar.
+	 * @param filtro String anteriormente almancenado.
+	 */
+	
 	public void filtrarModeloEliminar(DefaultListModel<String> modelo, String filtro) {
 		modelo.clear();
 		for (int i = 0; i < valores.size(); i++) {
@@ -249,10 +318,10 @@ public class Controller implements ActionListener {
 		}
 	}
 	
-	
-
-	
-
+	/**
+	 * Se llama cuando se presiona un JButton previamente inicializado.
+	 * Establece los comandos y la funcionalidad de cada elemento interactivo.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionCommand()) {

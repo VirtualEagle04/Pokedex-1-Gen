@@ -1,5 +1,24 @@
 package co.edu.unbosque.model;
 
+/**
+ * Clase base que contiene todos los atributos que comparten los Pokemones.
+ * @author Juan Esteban Quintero, Javier Felipe Meza, Joann Zamudio, Federico Vargas Rozo
+ * @param id ID del Pokemon a crear.
+ * @param nombre Nombre del Pokemon a crear.
+ * @param lv Nivel (Level) del Pokemon a crear.
+ * @param hp Puntos de Salud (Health Points) del Pokemon a crear.
+ * @param ataque Ataque del Pokemon a crear.
+ * @param defensa Defensa del Pokemon a crear.
+ * @param atk_especial Ataque Especial del Pokemon a crear.
+ * @param def_especial Defensa Especial del Pokemon a crear.
+ * @param velocidad Velocidad del Pokemon a crear.
+ * @param altura Altura (en metros) del Pokemon a crear.
+ * @param peso Peso (en Kilogramos) del Pokemon a crear.
+ * @param tipo Tipo primario del Pokemon a crear.
+ * @param tipo_sec Tipo secundario del Pokemon a crear.
+ * @param descripcion Descripcion del Pokemon a crear.
+ */
+
 public class PokemonDTO {
 	private String id;
 	private String nombre;
@@ -22,6 +41,23 @@ public class PokemonDTO {
 	public PokemonDTO() {
 		
 	}
+	/**
+	 * Constructor de PokemonDTO con Tipo Secundario
+	 * @param id ID del Pokemon a crear.
+	 * @param nombre Nombre del Pokemon a crear.
+	 * @param lv Nivel (Level) del Pokemon a crear.
+	 * @param hp Puntos de Salud (Health Points) del Pokemon a crear.
+	 * @param ataque Ataque del Pokemon a crear.
+	 * @param defensa Defensa del Pokemon a crear.
+	 * @param atk_especial Ataque Especial del Pokemon a crear.
+	 * @param def_especial Defensa Especial del Pokemon a crear.
+	 * @param velocidad Velocidad del Pokemon a crear.
+	 * @param altura Altura (en metros) del Pokemon a crear.
+	 * @param peso Peso (en Kilogramos) del Pokemon a crear.
+	 * @param tipo Tipo primario del Pokemon a crear.
+	 * @param tipo_sec Tipo secundario del Pokemon a crear.
+	 * @param descripcion Descripcion del Pokemon a crear.
+	 */
 	
 	//Con Tipo Secundario
 	public PokemonDTO(String id, String nombre, int lv, float altura, float peso, String tipo, String tipo_sec, int hp, int ataque,
@@ -41,6 +77,24 @@ public class PokemonDTO {
 		this.velocidad = velocidad;
 		this.descripcion = descripcion;
 	}
+	
+	/**
+	 * Constructor de PokemonDTO sin Tipo Secundario
+	 * @param id ID del Pokemon a crear.
+	 * @param nombre Nombre del Pokemon a crear.
+	 * @param lv Nivel (Level) del Pokemon a crear.
+	 * @param hp Puntos de Salud (Health Points) del Pokemon a crear.
+	 * @param ataque Ataque del Pokemon a crear.
+	 * @param defensa Defensa del Pokemon a crear.
+	 * @param atk_especial Ataque Especial del Pokemon a crear.
+	 * @param def_especial Defensa Especial del Pokemon a crear.
+	 * @param velocidad Velocidad del Pokemon a crear.
+	 * @param altura Altura (en metros) del Pokemon a crear.
+	 * @param peso Peso (en Kilogramos) del Pokemon a crear.
+	 * @param tipo Tipo primario del Pokemon a crear.
+	 * @param descripcion Descripcion del Pokemon a crear.
+	 */
+	
 	//Sin Tipo Secundario
 	public PokemonDTO(String id, String nombre, int lv, float altura, float peso, String tipo, int hp, int ataque, int defensa,
 			int atk_especial, int def_especial, int velocidad, String descripcion) {

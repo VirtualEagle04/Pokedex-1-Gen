@@ -3,6 +3,16 @@ package co.edu.unbosque.view;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+/**
+ * Clase que hereda de JFrame y que contiene todos los paneles donde se mostrara los elementos visuales de la Pokedex.
+ * @author Juan Esteban Quintero, Javier Felipe Meza, Joann Zamudio, Federico Vargas Rozo
+ * @param panel_crud Panel de la clase PanelCRUD estatico que muestra las funciones CRUD: Agregar, Eliminar y Mostrar.
+ * @param panel_agregar Panel de la clase PanelAgregar que muestra la interfaz de la función Agregar.
+ * @param panel_mostrar Panel de la clase PanelMostrar que muestra la interfaz de la función Mostrar.
+ * @param panel_eliminar Panel de la clase PanelEliminar que muestra la interfaz de la función Eliminar.
+ * @param panel_info Panel de la clase PanelInfo que muestra la interfaz de la información de todos los Pokemones.
+ */
+
 public class VentanaPrincipal extends JFrame{
 	
 	private PanelCRUD panel_crud;

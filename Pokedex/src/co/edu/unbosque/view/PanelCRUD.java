@@ -12,6 +12,19 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
+/**
+ * Clase que hereda de la clase JPanel que está siempre visible en la ventana, y permite la seleccion de las diferentes funcionalidad del programa.
+ * @author Juan Esteban Quintero, Javier Felipe Meza, Joann Zamudio, Federico Vargas Rozo
+ * @param agregar Boton para mostrar el PanelAgregar.
+ * @param eliminar Boton para mostrar el PanelEliminar.
+ * @param mostrar Boton para mostrar el PanelMostrar.
+ * @param bg Lamina que muestra la imagen de fondo.
+ * @param agregar_sh Lamina para dar el efecto de una sombra en el boton de agregar. Puramente astetico.
+ * @param eliminar_sh Lamina para dar el efecto de una sombra en el boton de eliminar. Puramente astetico.
+ * @param mostrar_sh Lamina para dar el efecto de una sombra en el boton de mostrar. Puramente astetico.
+ * @param fuente Fuente encapsulada dentro del proyecto para evitar la necesidad de instalar la fuente personalizada en cada dispositivo.
+ */
+
 public class PanelCRUD extends JPanel{
 
 	private JButton agregar, eliminar, mostrar;

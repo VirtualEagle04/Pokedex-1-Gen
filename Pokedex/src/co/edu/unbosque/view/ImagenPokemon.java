@@ -27,7 +27,7 @@ public class ImagenPokemon extends JLabel{
 		imageIcon = new ImageIcon(dimg);
 		//Imagen ^
 		
-		setIcon(imageIcon);
+		setIcon(imageIcon); 
 	}
 
 	public BufferedImage getImg() {

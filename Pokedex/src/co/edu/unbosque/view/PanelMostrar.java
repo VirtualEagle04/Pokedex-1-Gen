@@ -1,6 +1,7 @@
 package co.edu.unbosque.view;
 
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.File;
@@ -17,6 +18,27 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+
+/**
+ * Clase que hereda de JPanel y que contiene la lista de Pokemones, el filtro de busqueda, el nombre y la imagen del Pokemon seleccionado, 
+ * y el boton para ver más información del Pokemon seleccionado.
+ * @author Juan Esteban Quintero, Javier Felipe Meza, Joann Zamudio, Federico Vargas Rozo
+ * @param panel_lista Panel que contiene la JList de los Pokemones.
+ * @param panel_lista_bg Lamina que muestra la imagen de fondo del panel.
+ * @param bg Archivo .gif del fondo animado.
+ * @param fuente Fuente encapsulada dentro del proyecto para evitar la necesidad de instalar la fuente personalizada en cada dispositivo.
+ * @param lista_n Permite mostrar de manera eficiente todo el contenido del ArrayList que contiene los Pokemones. 
+ * @param modelo Permite almancenar de forma temporal la informacion que sera impuesta el el JList.
+ * @param campo_filtro JTextField que funciona como filtro de busqueda de la lista.
+ * @param indicador_id Lamina indicadora del ID del Pokemon.
+ * @param indicador_nombre Lamina indicadora del Nombre del Pokemon.
+ * @param indicador_busqueda Lamina indicadora de la funcionalidad de busqueda.
+ * @param barra_lista JScrollPane que permite mostrar todos los elementos de la JList aun así no quepan en el panel.
+ * @param boton_seleccionar Boton que permite seleccionar un Pokemon de la lista para ampliar sus estadisticas en el PanelInfo.
+ * @param nombre_pokemon Lamina para mostrar el nombre del Pokemon actualmente seleccionado.
+ * @param nombre_pokemon_panel Lamina que muestra la imagen de fondo del panel.
+ * @param img_pokemon Objeto de la clase ImagenPokemon que permite mostrar la imagen del Pokemon actualmente seleccionado.
+ */
 
 public class PanelMostrar extends JPanel {
 

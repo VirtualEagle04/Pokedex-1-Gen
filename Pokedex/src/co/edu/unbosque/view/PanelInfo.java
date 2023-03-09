@@ -16,6 +16,27 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
+/**
+ * 
+ * @author Juan Esteban Quintero, Javier Felipe Meza, Joann Zamudio, Federico Vargas Rozo
+ * @param tipo1_img Objeto de la clase ImagenTipo que permite mostrar la imagen del tipo del Pokemon seleccionado.
+ * @param tipo2_img Objeto de la clase ImagenTipo que permite mostrar la imagen del tipo secundario del Pokemon seleccionado.
+ * @param img_nombre Objeto de la clase ImagenPokemon que permite mostrar la imagen del Pokemon actualmente seleccionado.
+ * @param id ID del Pokemon seleccionado.
+ * @param nombre Nombre del Pokemon seleccionado.
+ * @param hp Puntos de Salud del Pokemon seleccionado.
+ * @param atk Ataque de Pokemon seleccionado.
+ * @param def Defensa del Pokemon seleccionado.
+ * @param satk Ataque Especial del Pokemon seleccionado.
+ * @param sdef Defensa Especial del Pokemon seleccionado.
+ * @param vel Velocidad del Pokemon seleccionado.
+ * @param lv Nivel del Pokemon seleccionado.
+ * @param peso Peso del Pokemon seleccionado (en Kilogramos).
+ * @param alt Altura del Pokemon seleccionado (en metros).
+ * @param bg Lamina que muestra la imagen de fondo.
+ * @param fuente Fuente encapsulada dentro del proyecto para evitar la necesidad de instalar la fuente personalizada en cada dispositivo.
+ */
+
 public class PanelInfo extends JPanel {
 
 	private ImagenTipo tipo1_img, tipo2_img;
